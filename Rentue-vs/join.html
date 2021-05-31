@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <h5>회원가입 페이지입니다.</h5>
+			<form action = "" method = "post">
+                <div>
+                    <input type="radio" name = "렌탈업체" value="Rent_member">렌탈업체
+                     <input type="radio" name = "렌탈업체" value="Ct_member">관제소
+                </div>
+				<li><input type="text" placeholder="ID를 입력하세요" name = "id"></li>
+                <span></span><!--이미 있는 아이디 입니다 or 멋진 아이디네요!--><br>
+				<li><input type="password" placeholder="PW를 입력하세요" name = "pw"></li>
+                <!-- 관제소 선택시에는 업체명과 사업자번호가 비활성화 되어야 한다 -->
+				<li><input type="text" placeholder="업체명를 입력하세요" name = "rent_name"></li>
+				<li><input type="text" placeholder="사업자번호를 입력하세요" name = "rent_num"></li>
+                <li><input type="text" placeholder="주소를 입력하세요" name = "addr"></li>
+				<li><input type="submit" value="JOIN US" class="button fit" onclick="location.href='login.html'"></li>
+			</form>
+
+            <!-- 조인버튼 클릭 시 로그인 화면으로 가야함-->
+</body>
+</html>
