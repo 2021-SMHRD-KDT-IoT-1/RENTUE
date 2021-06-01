@@ -19,6 +19,13 @@ public class CtDTO {
 	}
 
 
+	public CtDTO(String ct_id, String ct_pw) {
+		super();
+		this.ct_id = ct_id;
+		this.ct_pw = ct_pw;
+	}
+
+
 	public String getCt_id() {
 		return ct_id;
 	}
