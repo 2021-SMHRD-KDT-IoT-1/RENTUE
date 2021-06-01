@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    로그인 페이지
+    <div>
+        <input type="radio" name = "렌탈업체" value="Rent_member">렌탈업체
+         <input type="radio" name = "렌탈업체" value="Ct_member">관제소
+    </div>
+    
+    <form name="input" method="post" action="LoginServiceCon">
+        <ul>ID<input type="text" name="id"></ul>
+        <ul>PW<input type="password" name="pw"></ul>
+    	<input type="submit" value="Login">
+    </form>
+
+    <div>
+        <input type="button" value="회원가입" onclick="location.href='join.html'">
+   </div>
+</body>
+</html>
