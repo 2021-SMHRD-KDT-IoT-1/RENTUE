@@ -52,14 +52,14 @@ public class RentDAO {
 
 		try {
 
-			String sql = "insert into rent_member values(?,?,?,?,?)";
+			String sql = "insert into rent_member values(?,null,?,?,?,?)";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getRent_id());
 			psmt.setString(2, dto.getRent_pw());
 			psmt.setString(3, dto.getRent_name());
 			psmt.setString(4, dto.getRent_num());
-			psmt.setString(4, dto.getRent_addr());
+			psmt.setString(5, dto.getRent_addr());
 
 			cnt = psmt.executeUpdate();
 
