@@ -5,26 +5,25 @@ public class RentDTO {
 	// 렌탈 아이디 , 관제소아이디, 비밀번호 , 업체명, 사업자번호, 주소 
 	// device로 rent_id 넘겨주고 , ct_member ct_id 받아옴.
 	private String rent_id;
-	private String ct_id;
 	private String rent_pw;
 	private String rent_name;	
 	private String rent_num;
 	private String rent_addr;
+	private String ct_id;
 	
-	public RentDTO(String rent_id, String ct_id, String rent_pw, String rent_name, String rent_num, String rent_addr) {
+	public RentDTO(String rent_id, String rent_pw, String rent_name, String rent_num, String rent_addr, String ct_id) {
 		super();
 		this.rent_id = rent_id;
-		this.ct_id = ct_id;
 		this.rent_pw = rent_pw;
 		this.rent_name = rent_name;
 		this.rent_num = rent_num;
 		this.rent_addr = rent_addr;
+		this.ct_id = ct_id;
 	}
 	
 	public RentDTO(String rent_id, String rent_pw, String rent_name, String rent_num, String rent_addr) {
 		
 		this.rent_id = rent_id;
-		
 		this.rent_pw = rent_pw;
 		this.rent_name = rent_name;
 		this.rent_num = rent_num;

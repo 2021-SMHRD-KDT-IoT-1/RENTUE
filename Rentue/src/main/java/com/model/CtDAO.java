@@ -47,6 +47,7 @@ public class CtDAO {
 	}
 
 	// 회원가입
+	// api와 연동하여 주소 입력하면 자동으로 좌표 뽑는 로직 필요함
 	public int join(CtDTO dto) {
 		conn();
 
@@ -59,7 +60,6 @@ public class CtDAO {
 			psmt.setString(2, dto.getCt_pw());
 			psmt.setString(3, dto.getCt_addr());
 		
-
 			cnt = psmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -88,8 +88,10 @@ public class CtDAO {
 				String ct_id = rs.getString(1);
 				String ct_pw = rs.getString(2);
 				String ct_addr = rs.getString(3);
+				double lon = rs.getDouble(4);
+				double lat = rs.getDouble(5);
 
-				login_dto = new CtDTO(ct_id, ct_pw, ct_addr);
+				login_dto = new CtDTO(ct_id, ct_pw, ct_addr, lon, lat);
 			}
 
 		} catch (SQLException e) {
@@ -103,6 +105,7 @@ public class CtDAO {
 	}
 
 	// Update
+	// 좌표 입력 로직 추가 필요
 	public int update(CtDTO dto) {
 		conn();
 		String sql = "update ct_member set ct_pw =? ,ct_addr=?  where ct_id=?";
@@ -110,7 +113,6 @@ public class CtDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getCt_pw());
-		
 			psmt.setString(2, dto.getCt_addr());
 			psmt.setString(3, dto.getCt_id());
 			cnt = psmt.executeUpdate();
@@ -137,8 +139,10 @@ public class CtDAO {
 				String ct_id = rs.getString(1);
 				String ct_pw = rs.getString(2);				
 				String ct_addr = rs.getString(3);
+				double lon = rs.getDouble(4);
+				double lat = rs.getDouble(5);
 
-				dto = new CtDTO( ct_id, ct_pw,ct_addr);
+				dto = new CtDTO(ct_id, ct_pw, ct_addr, lon, lat);
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -171,8 +175,10 @@ public class CtDAO {
 				String ct_id = rs.getString(1);
 				String ct_pw = rs.getString(2);			
 				String ct_addr = rs.getString(3);
+				double lon = rs.getDouble(4);
+				double lat = rs.getDouble(5);
 
-				dto = new CtDTO(ct_id, ct_pw , ct_addr);
+				dto = new CtDTO(ct_id, ct_pw, ct_addr, lon, lat);
 			}
 		} catch (SQLException e) {
 

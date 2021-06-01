@@ -47,12 +47,13 @@ public class RentDAO {
 	}
 
 	// 회원가입
+	// API와 연동하여 주소를 선택하면 가장 가까운 관제소 뽑아와서 자동으로 담당 관제소 할당해주는 로직 추가 필요
 	public int join(RentDTO dto) {
 		conn();
 
 		try {
 
-			String sql = "insert into rent_member values(?,null,?,?,?,?)";
+			String sql = "insert into rent_member values(?,?,?,?,?,null)";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getRent_id());
@@ -91,8 +92,9 @@ public class RentDAO {
 				String rent_name = rs.getString(3);
 				String rent_num = rs.getString(4);
 				String rent_addr = rs.getString(5);
+				String ct_id = rs.getString(6);
 
-				login_dto = new RentDTO(rent_id, rent_pw, rent_name, rent_num, rent_addr);
+				login_dto = new RentDTO(rent_id, rent_pw, rent_name, rent_num, rent_addr, ct_id);
 			}
 
 		} catch (SQLException e) {
@@ -117,6 +119,7 @@ public class RentDAO {
 			psmt.setString(3, dto.getRent_num());
 			psmt.setString(4, dto.getRent_addr());
 			psmt.setString(5, dto.getRent_id());
+			
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
 
@@ -138,13 +141,13 @@ public class RentDAO {
 			while (rs.next()) {
 
 				String rent_id = rs.getString(1);
-				String ct_id = rs.getString(2);
-				String rent_pw = rs.getString(3);
-				String rent_name = rs.getString(4);
-				String rent_num = rs.getString(5);
-				String rent_addr = rs.getString(6);
+				String rent_pw = rs.getString(2);
+				String rent_name = rs.getString(3);
+				String rent_num = rs.getString(4);
+				String rent_addr = rs.getString(5);
+				String ct_id = rs.getString(6);
 
-				dto = new RentDTO(rent_id, ct_id, rent_pw, rent_name, rent_num, rent_addr);
+				dto = new RentDTO(rent_id, rent_pw, rent_name, rent_num, rent_addr, ct_id);
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -174,13 +177,13 @@ public class RentDAO {
 
 			if (rs.next()) {
 				String rent_id = rs.getString(1);
-				String ct_id = rs.getString(2);
-				String rent_pw = rs.getString(3);
-				String rent_name = rs.getString(4);
-				String rent_num = rs.getString(5);
-				String rent_addr = rs.getString(6);
+				String rent_pw = rs.getString(2);
+				String rent_name = rs.getString(3);
+				String rent_num = rs.getString(4);
+				String rent_addr = rs.getString(5);
+				String ct_id = rs.getString(6);
 
-				dto = new RentDTO(rent_id, ct_id, rent_pw, rent_name, rent_num, rent_addr);
+				dto = new RentDTO(rent_id, rent_pw, rent_name, rent_num, rent_addr, ct_id);
 			}
 		} catch (SQLException e) {
 

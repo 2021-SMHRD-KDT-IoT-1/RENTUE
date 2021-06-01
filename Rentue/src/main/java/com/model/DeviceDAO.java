@@ -50,16 +50,15 @@ public class DeviceDAO {
 
 		conn();
 
-		String sql = "insert into Device values(devive_num.nextval, ?, ?, ?, ?, ?)";
+		String sql = "insert into Device values(devive_num.nextval, ?, ?, ?, ?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, dto.getRent_id());
-			psmt.setString(2, dto.getCt_id());
-			psmt.setString(3, dto.getDevice_type());
-			psmt.setString(4, dto.getRent_state());
-			psmt.setString(5, dto.getBroken());
+			psmt.setString(2, dto.getDevice_type());
+			psmt.setString(3, dto.getRent_state());
+			psmt.setString(4, dto.getBroken());
 
 			cnt = psmt.executeUpdate();
 
@@ -149,25 +148,25 @@ public class DeviceDAO {
 
 	}
 
-	public ArrayList<DeviceDTO> select() {
+	public ArrayList<DeviceDTO> select(String id) {
 		list = new ArrayList<DeviceDTO>();
 		conn();
 
 		try {
-			String sql = "select * from Device";
+			String sql = "select * from Device from rent_id=?";
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
 
 				int device_num = rs.getInt(1);
 				String rent_id = rs.getString(2);
-				String ct_id = rs.getString(3);
-				String device_type = rs.getString(4);
-				String rent_state = rs.getString(5);
-				String broken = rs.getString(6);
+				String device_type = rs.getString(3);
+				String rent_state = rs.getString(4);
+				String broken = rs.getString(5);
 
-				dto = new DeviceDTO(device_num, rent_id, ct_id, device_type, rent_state, broken);
+				dto = new DeviceDTO(device_num, rent_id, device_type, rent_state, broken);
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -198,12 +197,11 @@ public class DeviceDAO {
 			if (rs.next()) {
 				int device_num = rs.getInt(1);
 				String rent_id = rs.getString(2);
-				String ct_id = rs.getString(3);
-				String device_type = rs.getString(4);
-				String rent_state = rs.getString(5);
-				String broken = rs.getString(6);
+				String device_type = rs.getString(3);
+				String rent_state = rs.getString(4);
+				String broken = rs.getString(5);
 
-				dto = new DeviceDTO(device_num, rent_id, ct_id, device_type, rent_state, broken);
+				dto = new DeviceDTO(device_num, rent_id, device_type, rent_state, broken);
 			}
 		} catch (SQLException e) {
 
