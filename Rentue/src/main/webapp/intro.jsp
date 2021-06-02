@@ -96,7 +96,7 @@
 									<h2>제품소개</h2>
 									<p>제품설명란</p>
 									<ul class="actions">
-										<li><a href="generic.html" class="button">Join Us</a></li>
+										<li><a href="join.jsp" class="button">Join Us</a></li>
 									</ul>
 								</div>
 							</div>
@@ -107,7 +107,7 @@
 					<section id="two" class="wrapper style1 fade-up">
 						<div class="inner">
 							<h2>Get in touch</h2>
-							<p>제품고장 신고 문의 사항 작성</p>
+							<p>문의 사항</p>
 							<div class="split style1">
 								<section>
 									<form method="post" action="#">
@@ -134,13 +134,13 @@
 									<ul class="contact">
 										<li>
 											<h3>Address</h3>
-											<span>12345 Somewhere Road #654<br />
-											Nashville, TN 00000-0000<br />
-											USA</span>
+											<span>31-15 광주아트센터 3층<br />
+											광주광역시, 동구 예술길<br />
+											대한민국</span>
 										</li>
 										<li>
 											<h3>Email</h3>
-											<a href="#">user@untitled.tld</a>
+											<a href="#">Rentue@rentue.co.kr</a>
 										</li>
 										<li>
 											<h3>Phone</h3>
