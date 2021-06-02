@@ -53,7 +53,7 @@ public class RentDAO {
 
 		try {
 
-			String sql = "insert into rent_member values(?,?,?,?,?,null)";
+			String sql = "insert into rent_member values(?,?,?,?,?,?)";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getRent_id());
@@ -61,6 +61,7 @@ public class RentDAO {
 			psmt.setString(3, dto.getRent_name());
 			psmt.setString(4, dto.getRent_num());
 			psmt.setString(5, dto.getRent_addr());
+			psmt.setString(6, dto.getCt_id());
 
 			cnt = psmt.executeUpdate();
 

@@ -53,12 +53,15 @@ public class CtDAO {
 
 		try {
 
-			String sql = "insert into ct_member values(?,?,?)";
+			String sql = "insert into ct_member values(?,?,?,?,?,?)";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getCt_id());
 			psmt.setString(2, dto.getCt_pw());
-			psmt.setString(3, dto.getCt_addr());
+			psmt.setString(3, dto.getCt_name());
+			psmt.setString(4, dto.getCt_addr());
+			psmt.setDouble(5, dto.getLon());
+			psmt.setDouble(6, dto.getLat());
 		
 			cnt = psmt.executeUpdate();
 
@@ -87,11 +90,12 @@ public class CtDAO {
 			if (rs.next()) {
 				String ct_id = rs.getString(1);
 				String ct_pw = rs.getString(2);
-				String ct_addr = rs.getString(3);
-				double lon = rs.getDouble(4);
-				double lat = rs.getDouble(5);
+				String ct_name = rs.getString(3);
+				String ct_addr = rs.getString(4);
+				double lon = rs.getDouble(5);
+				double lat = rs.getDouble(6);
 
-				login_dto = new CtDTO(ct_id, ct_pw, ct_addr, lon, lat);
+				login_dto = new CtDTO(ct_id, ct_pw, ct_name, ct_addr, lon, lat);
 			}
 
 		} catch (SQLException e) {
@@ -138,11 +142,12 @@ public class CtDAO {
 				
 				String ct_id = rs.getString(1);
 				String ct_pw = rs.getString(2);				
-				String ct_addr = rs.getString(3);
-				double lon = rs.getDouble(4);
-				double lat = rs.getDouble(5);
+				String ct_name = rs.getString(3);				
+				String ct_addr = rs.getString(4);
+				double lon = rs.getDouble(5);
+				double lat = rs.getDouble(6);
 
-				dto = new CtDTO(ct_id, ct_pw, ct_addr, lon, lat);
+				dto = new CtDTO(ct_id, ct_pw, ct_name, ct_addr, lon, lat);
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -173,12 +178,13 @@ public class CtDAO {
 			if (rs.next()) {
 			
 				String ct_id = rs.getString(1);
-				String ct_pw = rs.getString(2);			
-				String ct_addr = rs.getString(3);
-				double lon = rs.getDouble(4);
-				double lat = rs.getDouble(5);
+				String ct_pw = rs.getString(2);				
+				String ct_name = rs.getString(3);				
+				String ct_addr = rs.getString(4);
+				double lon = rs.getDouble(5);
+				double lat = rs.getDouble(6);
 
-				dto = new CtDTO(ct_id, ct_pw, ct_addr, lon, lat);
+				dto = new CtDTO(ct_id, ct_pw, ct_name, ct_addr, lon, lat);
 			}
 		} catch (SQLException e) {
 
