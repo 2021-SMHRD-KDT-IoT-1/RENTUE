@@ -43,7 +43,7 @@ create table contact (
 
 create sequence device_num increment by 1 start with 1;
 
--- 커맨드라인에서 입력시 생성됨 주석 지우고 해야함
+
 CREATE OR REPLACE FUNCTION RADIANS(nDegrees IN NUMBER) RETURN NUMBER DETERMINISTIC IS
 BEGIN
    RETURN nDegrees / 57.29577951308232087679815481410517033235;
