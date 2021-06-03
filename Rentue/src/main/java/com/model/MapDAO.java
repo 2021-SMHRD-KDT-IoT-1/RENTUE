@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class MapDAO {
 
@@ -43,13 +45,13 @@ public class MapDAO {
 		}
 	}
 	
-	public ArrayList<String> search(double x, double y) {
-		ArrayList<String> list = new ArrayList<String>();
+	public JSONObject search(double x, double y) {
+		JSONObject list = new JSONObject();
 		conn();
 		
 		try {
-			String sql = "SELECT ROWNUM, x.ct_id\r\n"
-					+ "FROM (SELECT a.ct_id, (6371 * acos( cos( RADIANS(?)) * cos( RADIANS(lat))\r\n"
+			String sql = "SELECT ROWNUM, x.ct_id, x.ct_name\r\n"
+					+ "FROM (SELECT a.ct_id, a.ct_name, (6371 * acos( cos( RADIANS(?)) * cos( RADIANS(lat))\r\n"
 					+ "	* cos( RADIANS(lon) - RADIANS(?))\r\n"
 					+ "	+ sin( RADIANS(?)) * sin( RADIANS(lat)))) AS distance\r\n"
 					+ "FROM ct_member a\r\n"
@@ -66,7 +68,10 @@ public class MapDAO {
 			while (rs.next()) {
 
 				String ct_id = rs.getString(2);
-				list.add(ct_id);
+				String ct_name = rs.getString(3);
+				
+				
+				list.put(ct_id, ct_name);
 				
 			}
 		} catch (SQLException e) {

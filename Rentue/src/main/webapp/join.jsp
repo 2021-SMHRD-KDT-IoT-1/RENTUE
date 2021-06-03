@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 <style>
 li{
@@ -15,23 +15,23 @@ li{
 </head>
 <body>
 
-	<h5>È¸¿ø°¡ÀÔ ÆäÀÌÁöÀÔ´Ï´Ù.</h5>
+	<h5>íšŒì›ê°€ì… í˜ì´ì§€ì…ë‹ˆë‹¤.</h5>
 	<ul>
-		<li><input type="radio" name="member" value="Rent_member" checked>·»Å»¾÷Ã¼
-			<input type="radio" name="member" value="Ct_member">°üÁ¦¼Ò</li>
-		<li><input type="text" placeholder="ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä" id="id"></li>
+		<li><input type="radio" name="member" value="Rent_member" checked>ë Œíƒˆì—…ì²´
+			<input type="radio" name="member" value="Ct_member">ê´€ì œì†Œ</li>
+		<li><input type="text" placeholder="IDë¥¼ ì…ë ¥í•˜ì„¸ìš”" id="id"></li>
 		<li><span></span></li>
-		<!--ÀÌ¹Ì ÀÖ´Â ¾ÆÀÌµğ ÀÔ´Ï´Ù or ¸ÚÁø ¾ÆÀÌµğ³×¿ä!-->
-		<li><input type="password" placeholder="PW¸¦ ÀÔ·ÂÇÏ¼¼¿ä" id="pw"></li>
-		<!-- °üÁ¦¼Ò ¼±ÅÃ½Ã¿¡´Â ¾÷Ã¼¸í°ú »ç¾÷ÀÚ¹øÈ£°¡ ºñÈ°¼ºÈ­ µÇ¾î¾ß ÇÑ´Ù -->
-		<li id="r_name"><input type="text" placeholder="¾÷Ã¼¸í¸¦ ÀÔ·ÂÇÏ¼¼¿ä" id="rent_name"></li>
-		<li id="r_num"><input type="text" placeholder="»ç¾÷ÀÚ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä" id="rent_num"></li>
-		<li><input type="text" id="sample5_address" placeholder="ÁÖ¼Ò¸¦ °Ë»öÇÏ¼¼¿ä" >
-			<input type="button" onclick="sample5_execDaumPostcode()" value="ÁÖ¼Ò °Ë»ö"></li>
+		<!--ì´ë¯¸ ìˆëŠ” ì•„ì´ë”” ì…ë‹ˆë‹¤ or ë©‹ì§„ ì•„ì´ë””ë„¤ìš”!-->
+		<li><input type="password" placeholder="PWë¥¼ ì…ë ¥í•˜ì„¸ìš”" id="pw"></li>
+		<!-- ê´€ì œì†Œ ì„ íƒì‹œì—ëŠ” ì—…ì²´ëª…ê³¼ ì‚¬ì—…ìë²ˆí˜¸ê°€ ë¹„í™œì„±í™” ë˜ì–´ì•¼ í•œë‹¤ -->
+		<li><input type="text" placeholder="ì—…ì²´ëª…ë¥¼ ì…ë ¥í•˜ì„¸ìš”" id="rent_name"></li>
+		<li id="r_num"><input type="text" placeholder="ì‚¬ì—…ìë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”" id="rent_num"></li>
+		<li><input type="text" id="sample5_address" placeholder="ì£¼ì†Œë¥¼ ê²€ìƒ‰í•˜ì„¸ìš”" >
+			<input type="button" onclick="sample5_execDaumPostcode()" value="ì£¼ì†Œ ê²€ìƒ‰"></li>
 		<li id="select"><select id="targetSel">
 
 		</select>
-			<button id="search">°¡±î¿î °üÁ¦¼Ò Ã£±â</button></li>
+			<button id="search">ê°€ê¹Œìš´ ê´€ì œì†Œ ì°¾ê¸°</button></li>
 		<li><button id="submit" type="button" onclick="button_ps()">JOIN US</button></li>
 	</ul>
 	<div id="map"
@@ -39,33 +39,33 @@ li{
 
 
 
-	<!-- ÁÖ¼Ò ¼±ÅÃ½Ã Áöµµ ¶ß´Â ÄÚµå -->
+	<!-- ì£¼ì†Œ ì„ íƒì‹œ ì§€ë„ ëœ¨ëŠ” ì½”ë“œ -->
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=º»ÀÎ¾ÛÅ°ÁÖ¼ÒÀÔ·ÂÇÏ±â!!!!!&libraries=services"></script> -->
+	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ë³¸ì¸ì•±í‚¤ì£¼ì†Œì…ë ¥í•˜ê¸°!!!!!&libraries=services"></script> -->
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a&libraries=services"></script>
 	<script>
 		
-		// °Ë»öµÈ ÁÂÇ¥
+		// ê²€ìƒ‰ëœ ì¢Œí‘œ
 		let result;
 		
-		// °Ë»öµÈ ÁÖ¼Ò°ª
+		// ê²€ìƒ‰ëœ ì£¼ì†Œê°’
 		let addr_save;
 	
 	
-		var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div
+		var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div
 		mapOption = {
-			center : new daum.maps.LatLng(37.537187, 127.005476), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
+			center : new daum.maps.LatLng(37.537187, 127.005476), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
 			level : 5
-		// ÁöµµÀÇ È®´ë ·¹º§
+		// ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
 		};
 
-		//Áöµµ¸¦ ¹Ì¸® »ı¼º
+		//ì§€ë„ë¥¼ ë¯¸ë¦¬ ìƒì„±
 		var map = new daum.maps.Map(mapContainer, mapOption);
-		//ÁÖ¼Ò-ÁÂÇ¥ º¯È¯ °´Ã¼¸¦ »ı¼º
+		//ì£¼ì†Œ-ì¢Œí‘œ ë³€í™˜ ê°ì²´ë¥¼ ìƒì„±
 		var geocoder = new daum.maps.services.Geocoder();
-		//¸¶Ä¿¸¦ ¹Ì¸® »ı¼º
+		//ë§ˆì»¤ë¥¼ ë¯¸ë¦¬ ìƒì„±
 		var marker = new daum.maps.Marker({
 			position : new daum.maps.LatLng(37.537187, 127.005476),
 			map : map
@@ -74,27 +74,27 @@ li{
 		function sample5_execDaumPostcode() {
 			new daum.Postcode({
 				oncomplete : function(data) {
-					var addr = data.address; // ÃÖÁ¾ ÁÖ¼Ò º¯¼ö
+					var addr = data.address; // ìµœì¢… ì£¼ì†Œ ë³€ìˆ˜
 					addr_save = addr;
-					// ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+					// ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
 					document.getElementById("sample5_address").value = addr;
-					// ÁÖ¼Ò·Î »ó¼¼ Á¤º¸¸¦ °Ë»ö
+					// ì£¼ì†Œë¡œ ìƒì„¸ ì •ë³´ë¥¼ ê²€ìƒ‰
 					geocoder.addressSearch(data.address, function(results,
 							status) {
-						// Á¤»óÀûÀ¸·Î °Ë»öÀÌ ¿Ï·áµÆÀ¸¸é
+						// ì •ìƒì ìœ¼ë¡œ ê²€ìƒ‰ì´ ì™„ë£Œëìœ¼ë©´
 						if (status === daum.maps.services.Status.OK) {
 
-							result = results[0]; //Ã¹¹øÂ° °á°úÀÇ °ªÀ» È°¿ë
+							result = results[0]; //ì²«ë²ˆì§¸ ê²°ê³¼ì˜ ê°’ì„ í™œìš©
 
-							// ÇØ´ç ÁÖ¼Ò¿¡ ´ëÇÑ ÁÂÇ¥¸¦ ¹Ş¾Æ¼­
+							// í•´ë‹¹ ì£¼ì†Œì— ëŒ€í•œ ì¢Œí‘œë¥¼ ë°›ì•„ì„œ
 							var coords = new daum.maps.LatLng(result.y,
 									result.x);
-							// Áöµµ¸¦ º¸¿©ÁØ´Ù.
+							// ì§€ë„ë¥¼ ë³´ì—¬ì¤€ë‹¤.
 							mapContainer.style.display = "block";
 							map.relayout();
-							// Áöµµ Áß½ÉÀ» º¯°æÇÑ´Ù.
+							// ì§€ë„ ì¤‘ì‹¬ì„ ë³€ê²½í•œë‹¤.
 							map.setCenter(coords);
-							// ¸¶Ä¿¸¦ °á°ú°ªÀ¸·Î ¹ŞÀº À§Ä¡·Î ¿Å±ä´Ù.
+							// ë§ˆì»¤ë¥¼ ê²°ê³¼ê°’ìœ¼ë¡œ ë°›ì€ ìœ„ì¹˜ë¡œ ì˜®ê¸´ë‹¤.
 							marker.setPosition(coords)
 						}
 					});
@@ -130,10 +130,10 @@ li{
 		        	},
  		         
 		        success:function(){
-		            console.log("¿Ï·á!");
+		            console.log("ì™„ë£Œ!");
 		        },
 		        error:function(){
-		            alert("¿¡·¯ ¹ß»ı~~ \n");
+		            alert("ì—ëŸ¬ ë°œìƒ~~ \n");
 		    	}
 			});
 		}
@@ -147,17 +147,12 @@ li{
 				var type = this.value;
 
 				if (type == "Ct_member") {
-					$("input[name='r_name']").prop("disabled", true);
 					$("input[name='r_num']").prop("disabled", true);
-					$("input[name='r_name']").val("");
 					$("input[name='r_num']").val("");
-					$("#r_name").hide();
 					$("#r_num").hide();
 					$("#select").hide();
 				} else {
-					$("input[name='r_name']").prop("disabled", false);
 					$("input[name='r_num']").prop("disabled", false);
-					$("#r_name").show();
 					$("#r_num").show();
 					$("#select").show();
 				}
@@ -171,15 +166,17 @@ li{
 					'x' : result.x,
 					'y' : result.y
 				},
+				contentType : "application/json; charset : euc-kr",
+				dataType : "JSON",
 				url : 'SearchCt',
-				success : function(jsonArray) {
-					console.log(jsonArray);
+				success : function(jsonList) {
+					console.log(jsonList);
+					
 					
 					$('#targetSel').children("option").remove();
-					for (var i = 0; i < jsonArray.length; i++) {
-						console.log(jsonArray[i]);
-
-						var option = "<option value='" + jsonArray[i]+"'>" + jsonArray[i]+ "</option>";
+					for (var data in jsonList) {
+						
+						var option = "<option value='" + data + "'>" + jsonList[data] + "</option>";
 						console.log(option);
 						$('#targetSel').append(option);
 
