@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -45,8 +49,12 @@ public class MapDAO {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public JSONObject search(double x, double y) {
+		
+		JSONArray data_arr = new JSONArray();
 		JSONObject list = new JSONObject();
+		
 		conn();
 		
 		try {
@@ -67,11 +75,19 @@ public class MapDAO {
 
 			while (rs.next()) {
 
+				String rownum = rs.getString(1);
 				String ct_id = rs.getString(2);
 				String ct_name = rs.getString(3);
 				
+				System.out.print(ct_name + " ");
 				
-				list.put(ct_id, ct_name);
+				JSONObject data = new JSONObject();
+				data.put(ct_id, ct_name);
+			
+//				data_arr.add(data);
+				
+//				list = new JSONObject();
+				list.put(rownum, data);
 				
 			}
 		} catch (SQLException e) {

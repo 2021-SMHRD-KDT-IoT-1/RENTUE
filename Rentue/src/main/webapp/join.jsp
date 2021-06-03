@@ -131,6 +131,8 @@ li{
  		         
 		        success:function(){
 		            console.log("완료!");
+		            let url = 'intro.jsp';
+		            location.replace(url);
 		        },
 		        error:function(){
 		            alert("에러 발생~~ \n");
@@ -172,16 +174,18 @@ li{
 				success : function(jsonList) {
 					console.log(jsonList);
 					
-					
 					$('#targetSel').children("option").remove();
-					for (var data in jsonList) {
-						
-						var option = "<option value='" + data + "'>" + jsonList[data] + "</option>";
-						console.log(option);
-						$('#targetSel').append(option);
-
+					for (var key in jsonList) {
+						for (var val in jsonList[key]){
+							var option = "<option value='" + val + "'>" + jsonList[key][val] + "</option>";
+							console.log(option);
+							$('#targetSel').append(option);
+						}
 					} 
-				}
+ 				},
+				 error:function(){
+			            alert("에러 발생~~ \n");
+			   	}
 			});
 		});
 		

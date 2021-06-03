@@ -60,8 +60,8 @@ FROM ct_member
 ORDER BY distance;
 
 -- 계산결과를 바탕으로 가장 가까운 것부터 정렬하여 첫번째 컬럼만 뽑아옴
-SELECT ROWNUM, x.ct_id
-FROM (SELECT a.ct_id, (6371 * acos( cos( RADIANS(35.1498791)) * cos( RADIANS(lat))
+SELECT ROWNUM, x.ct_id, x.ct_name
+FROM (SELECT a.ct_id, a.ct_name, (6371 * acos( cos( RADIANS(35.1498791)) * cos( RADIANS(lat))
    * cos( RADIANS(lon) - RADIANS(126.919844))
    + sin( RADIANS(35.1498791)) * sin( RADIANS(lat)))) AS distance
 FROM ct_member a
@@ -102,3 +102,5 @@ insert into ct_member values('jinha', 111, '진하해수욕장', '울산 울주군 서생면 �
 insert into ct_member values('goraebul', 111, '고래불해수욕장', '경북 영덕군 병곡면 병곡리 58-26', 129.410588, 36.5990555);
 insert into ct_member values('gyeongpo', 111, '경포해변', '강원 강릉시 장해로 514', 128.907369, 37.8056863);
 insert into ct_member values('jeongdongjin', 111, '정동진해수욕장', '강원 강릉시 강동면 정동진리 64-3', 129.027017, 37.6843303);
+
+insert into rent_member values('test', 111, '스마트인재캠퍼스', '563-88-00950', '광주 동구 예술길 31-15', '')
