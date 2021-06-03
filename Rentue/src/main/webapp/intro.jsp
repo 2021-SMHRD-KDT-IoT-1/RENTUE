@@ -206,7 +206,14 @@
 	 	        },
 	 	        
 	 	       success:function(){	 	    	
-	 	    	 console.log("완료!");	           
+	 	    		console.log("완료!");
+	 	   			let url = null;
+	 	   			if(member=='Rent_member'){
+	 	   				url = 'rent_main.jsp';
+	 	   			}else{
+	 	   				url = 'ct_main.jsp';
+	 	   			}
+	            	location.replace(url);
 		        },
 		        error:function(){
 		           alert("에러 발생~~ \n");
