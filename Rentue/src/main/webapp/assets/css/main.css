@@ -64,12 +64,13 @@ input::-moz-focus-inner {
 	padding: 0;
 }
 
+/*
 input, select, textarea {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
-}
+}*/
 
 /* Basic */
 
@@ -2382,8 +2383,7 @@ input, select, textarea {
 			min-height: 10em;
 		}
 
-	input[type="checkbox"],
-	input[type="radio"] {
+	/*input[type="checkbox"],	input[type="radio"] {
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		-ms-appearance: none;
@@ -2394,7 +2394,7 @@ input, select, textarea {
 		opacity: 0;
 		width: 1em;
 		z-index: -1;
-	}
+	}*/
 
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {

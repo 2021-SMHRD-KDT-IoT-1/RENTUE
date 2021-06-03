@@ -18,23 +18,30 @@ public class LoginServiceCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("EUC-KR");
 		String member = request.getParameter("member");
 		String id = request.getParameter("id"); 
 		String pw = request.getParameter("pw");
 		
-		HttpSession session = request.getSession();
+	
 		
 		if(member.equals("Rent_member")) {
+			
 			RentDTO dto = new RentDTO(id, pw);
 			RentDAO dao = new RentDAO();
 			RentDTO login_dto = dao.login(dto);
 			
 			if(login_dto != null) {
-				System.out.println("로그인 성공");
 				//렌탈메인으로 보내기
-				session.setAttribute("login_dto", login_dto);
+				System.out.println("로그인 성공");
+				session.setAttribute("dto", login_dto);
+				response.sendRedirect("rent_main.jsp");
+			}else {
+				System.out.println("로그인 실패");
+				response.sendRedirect("intro.jsp");
+				
 			}
 		}else if(member.equals("Ct_member")) {
 			CtDTO dto = new CtDTO(id, pw);
@@ -42,11 +49,17 @@ public class LoginServiceCon extends HttpServlet {
 			CtDTO login_dto = dao.login(dto);
 			
 			if(login_dto != null) {
-				System.out.println("로그인 성공");
 				//관제소메인으로 보내기
-				session.setAttribute("login_dto", login_dto);
+				System.out.println("로그인 성공");
+				session.setAttribute("dto", login_dto);
+				response.sendRedirect("ct_main.jsp");
+			}else {
+				System.out.println("로그인 실패");
+				response.sendRedirect("intro.jsp");
+				
 			}
 		}
+	
 		
 	}
 

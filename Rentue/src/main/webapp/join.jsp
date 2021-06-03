@@ -21,9 +21,12 @@ li{
 			<input type="radio" name="member" value="Ct_member">관제소</li>
 		<li><input type="text" placeholder="ID를 입력하세요" id="id"></li>
 		<li><span></span></li>
+		
 		<!--이미 있는 아이디 입니다 or 멋진 아이디네요!-->
+		
 		<li><input type="password" placeholder="PW를 입력하세요" id="pw"></li>
 		<!-- 관제소 선택시에는 업체명과 사업자번호가 비활성화 되어야 한다 -->
+		
 		<li><input type="text" placeholder="업체명를 입력하세요" id="rent_name"></li>
 		<li id="r_num"><input type="text" placeholder="사업자번호를 입력하세요" id="rent_num"></li>
 		<li><input type="text" id="sample5_address" placeholder="주소를 검색하세요" >
@@ -44,7 +47,7 @@ li{
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=본인앱키주소입력하기!!!!!&libraries=services"></script> -->
 	<script
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a&libraries=services"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c396fe0efc7b0e5f37418f17f1fd034d&libraries=services"></script>
 	<script>
 		
 		// 검색된 좌표

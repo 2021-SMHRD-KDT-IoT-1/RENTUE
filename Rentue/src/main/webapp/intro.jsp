@@ -51,11 +51,17 @@
 					</ul>
 	
 	<!-- 숨겨져 있는 로그인 영역부분 -->
-	<div style="display: none;" id="displaydiv">
-		<span>ID<input type ="text" name ="id"></span>
-		<span>PW<input type ="password" name ="pw"></span>
+	<div style="display: none;" id="displaydiv" >
+	
+		<span><input  type="radio" name="member" value="Rent_member" checked>렌탈업체
+			  <input   type="radio" name="member" value="Ct_member">관제소</span>
+			  
+		<span> ID<input type ="text" name ="id" id = "id"></span>
+		<span>PW<input type ="password" name ="pw"  id="pw"></span>
+		
 		<div><a id="joinbutton" href="join.jsp" class="button primary small">회원가입</a>
-		<input type="button" id="hidebtn" value="확인" class="button small"></div>	 
+		<input type="button"  id="hidebtn" value="확인" class="button small"  onclick="button_ps()"></div>
+		
 	</div>
 	
 	
@@ -181,6 +187,32 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			
+			
+			<script>
+			
+			function button_ps(){
+			 member = $("input:radio[name='member']:checked").val(),
+			 id = $('#id').val();
+			 pw = $('#pw').val();
+			 
+			 
+		    $.ajax({
+		        url:'LoginServiceCon',
+		        type:'post',
+	 	        data: {
+		        	member : member,
+		        	id : id, pw : pw,
+	 	        },
+	 	        
+	 	       success:function(){	 	    	
+	 	    	 console.log("완료!");	           
+		        },
+		        error:function(){
+		           alert("에러 발생~~ \n");
+		    	}
+		    });	
+			 }
+		    </script>
 	</body>
 </html>

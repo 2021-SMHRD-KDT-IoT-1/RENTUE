@@ -81,20 +81,22 @@ public class RentDAO {
 		conn();
 
 		try {
+			System.out.println(dto.getRent_id());
 			String sql = "select * from rent_member where Rent_id = ? and Rent_pw = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getRent_id());
 			psmt.setString(2, dto.getRent_pw());
 			rs = psmt.executeQuery();
-
+			System.out.println(rs);
 			if (rs.next()) {
+				System.out.println("1");
 				String rent_id = rs.getString(1);
 				String rent_pw = rs.getString(2);
 				String rent_name = rs.getString(3);
 				String rent_num = rs.getString(4);
 				String rent_addr = rs.getString(5);
 				String ct_id = rs.getString(6);
-
+				System.out.println(rent_id);
 				login_dto = new RentDTO(rent_id, rent_pw, rent_name, rent_num, rent_addr, ct_id);
 			}
 
