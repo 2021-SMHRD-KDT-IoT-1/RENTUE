@@ -12,7 +12,7 @@ create table rent_member(
 
    rent_id varchar2(20) PRIMARY KEY,
    rent_pw varchar2(20) not null,
-   rent_name varchar2(20),
+   rent_name varchar2(50),
    rent_num varchar2(20),
    rent_addr varchar2(100),
    ct_id varchar2(20),
@@ -88,9 +88,9 @@ drop table rent_member;
 
 drop table ct_member;
 
-
+-- 테스트용 db 구축
 insert into ct_member values('dolmeori', 111, '돌머리해수욕장', '전남 함평군 석성리 523-1', 126.440650, 35.0864430);
-insert into ct_member values('byeonsan', 111, '변산해수욕장', '전북 부안군 변산면 변산로 2100', 126.529650, 356776313);
+insert into ct_member values('byeonsan', 111, '변산해수욕장', '전북 부안군 변산면 변산로 2100', 126.529650, 35.6776313);
 insert into ct_member values('yulpo', 111, '율포해수욕장', '전남 보성군 회천면 우암길 24', 127.088538, 34.6699838);
 insert into ct_member values('daecheon', 111, '대천해수욕장', '충남 보령시 머드로 123', 126.510837, 36.3155558);
 insert into ct_member values('hakdongmongdol', 111, '학동몽돌해변', '경남 거제시 동부면 학동6길 18-1', 128.640243, 34.7733192);
@@ -103,4 +103,13 @@ insert into ct_member values('goraebul', 111, '고래불해수욕장', '경북 영덕군 병�
 insert into ct_member values('gyeongpo', 111, '경포해변', '강원 강릉시 장해로 514', 128.907369, 37.8056863);
 insert into ct_member values('jeongdongjin', 111, '정동진해수욕장', '강원 강릉시 강동면 정동진리 64-3', 129.027017, 37.6843303);
 
-insert into rent_member values('test', 111, '스마트인재캠퍼스', '563-88-00950', '광주 동구 예술길 31-15', '')
+insert into rent_member values('test', 111, '스마트렌트', '563-88-00950', '광주 동구 예술길 31-15', 'dolmeori');
+insert into rent_member values('rent', 111, '돌머리렌트', '531-77-05796', '전남 함평군 함평읍 돌머리길 355-177', 'dolmeori');
+
+-- A:튜브, B:핸디 라 가정
+insert into device values(device_num.nextval, 'test', 'A', 'F', 'F');
+insert into device values(device_num.nextval, 'test', 'B', 'F', 'F');
+
+select * from device where rent_id='test';
+select * from rent_member where ct_id='dolmeori';
+

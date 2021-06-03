@@ -37,11 +37,13 @@ public class LoginServiceCon extends HttpServlet {
 				//렌탈메인으로 보내기
 				System.out.println("로그인 성공");
 				session.setAttribute("dto", login_dto);
-				response.sendRedirect("rent_main.jsp");
 			}else {
 				System.out.println("로그인 실패");
-				response.sendRedirect("intro.jsp");
-				
+				try { 
+					response.getWriter().write("loginFail"); 
+				} catch (IOException e) { 
+					e.printStackTrace(); 
+				}
 			}
 		}else if(member.equals("Ct_member")) {
 			CtDTO dto = new CtDTO(id, pw);
@@ -52,11 +54,20 @@ public class LoginServiceCon extends HttpServlet {
 				//관제소메인으로 보내기
 				System.out.println("로그인 성공");
 				session.setAttribute("dto", login_dto);
-				response.sendRedirect("ct_main.jsp");
 			}else {
 				System.out.println("로그인 실패");
-				response.sendRedirect("intro.jsp");
-				
+				try { 
+					response.getWriter().write("loginFail"); 
+				} catch (IOException e) { 
+					e.printStackTrace(); 
+				}
+			}
+		}else {
+			System.out.println("실패");
+			try { 
+				response.getWriter().write("loginFail"); 
+			} catch (IOException e) { 
+				e.printStackTrace(); 
 			}
 		}
 	

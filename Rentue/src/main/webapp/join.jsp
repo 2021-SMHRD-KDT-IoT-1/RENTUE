@@ -32,7 +32,7 @@ li{
 		<li><input type="text" id="sample5_address" placeholder="주소를 검색하세요" >
 			<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"></li>
 		<li id="select"><select id="targetSel">
-
+			<option>소속 관제소 설정</option>
 		</select>
 			<button id="search">가까운 관제소 찾기</button></li>
 		<li><button id="submit" type="button" onclick="button_ps()">JOIN US</button></li>

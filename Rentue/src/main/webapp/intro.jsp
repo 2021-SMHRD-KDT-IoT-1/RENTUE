@@ -192,34 +192,42 @@
 			<script>
 			
 			function button_ps(){
-			 member = $("input:radio[name='member']:checked").val(),
-			 id = $('#id').val();
-			 pw = $('#pw').val();
-			 
-			 
-		    $.ajax({
-		        url:'LoginServiceCon',
-		        type:'post',
-	 	        data: {
-		        	member : member,
-		        	id : id, pw : pw,
-	 	        },
-	 	        
-	 	       success:function(){	 	    	
-	 	    		console.log("완료!");
-	 	   			let url = null;
-	 	   			if(member=='Rent_member'){
-	 	   				url = 'rent_main.jsp';
-	 	   			}else{
-	 	   				url = 'ct_main.jsp';
-	 	   			}
-	            	location.replace(url);
-		        },
-		        error:function(){
-		           alert("에러 발생~~ \n");
-		    	}
-		    });	
-			 }
+				 member = $("input:radio[name='member']:checked").val(),
+				 id = $('#id').val();
+				 pw = $('#pw').val();
+				 
+				 
+			    $.ajax({
+			        url:'LoginServiceCon',
+			        type:'post',
+		 	        data: {
+			        	member : member,
+			        	id : id, pw : pw,
+		 	        },
+		 	        
+		 	       success:function(data){	 	    	
+		 	    		console.log("완료!");
+		 	   			let url = null;
+		 	   			if(data == 'loginFail'){
+		 	   				alert('로그인에 실패하였습니다.')
+		 	   				url = 'intro.jsp';
+		 	   			}else{
+		 	   				if(member=='Rent_member'){
+		 	   					url = 'rent_main.jsp';
+		 	   				}else if(member=='Ct_member'){
+		 	   					url = 'ct_main.jsp';
+		 	   				}else if(member=='admin'){
+		 	   					url = 'admin_main.jsp';
+		 	   				}
+		 	   			}
+		            	location.replace(url);
+			        },
+			        error:function(){
+			           alert("에러 발생~~ \n");
+			           location.reload(true);
+			    	}
+			    });	
+				 }
 		    </script>
 	</body>
 </html>
