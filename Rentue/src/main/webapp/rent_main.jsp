@@ -74,18 +74,29 @@
 
 			<label>
 				<div>
+					
+					<select style="width: 200px; display: inline;">
+						<option>핸디형</option>
+						<option>튜브형</option>
+					</select>
 					<button>추가등록</button>
 					<button>삭제</button>
-					<select>
+					
+				</div>
+			</label>
+			<section>
+					
+				<div>	
+					<select style="width: 200px;">
 					<option>전체 기기</option>
 					<option>대여가능한 기기</option>
 					<option>대여중인 기기</option>
 					<option>고장 기기</option>
-					</select>
 				</div>
-			</label>
-			<section>
+				
 				<div overflow="scroll">
+				
+					</select>
 
 					<table>
 						<!-- 첫번째 행 -->
