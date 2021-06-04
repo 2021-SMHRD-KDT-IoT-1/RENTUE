@@ -70,14 +70,14 @@ public class DeviceDAO {
 
 	}
 
-	public int delete(int device_num) {
+	public int delete(String device_num) {
 		conn();
 
 		String sql = "delete from device where device_num = ?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, device_num);
+			psmt.setString(1, device_num);
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -149,11 +149,13 @@ public class DeviceDAO {
 	}
 
 	public ArrayList<DeviceDTO> select(String id) {
+		
+		
 		list = new ArrayList<DeviceDTO>();
 		conn();
 
 		try {
-			String sql = "select * from Device from rent_id=?";
+			String sql = "select * from Device where rent_id=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
 			rs = psmt.executeQuery();
@@ -215,4 +217,6 @@ public class DeviceDAO {
 
 	}
 
-}
+	}
+
+

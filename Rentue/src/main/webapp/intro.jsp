@@ -1,4 +1,6 @@
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
 <style>
@@ -103,6 +105,7 @@ li {
 
 
 
+
 	<!-- Sidebar -->
 	<section id="sidebar">
 		<div class="inner">
@@ -130,6 +133,7 @@ li {
 				<div id="container">
 					<button id="btn-modal" class="button primary small">회원가입</button>
 					<input type="button" id="hidebtn" value="확인" class="button small" onclick="button_ps()">
+
 				</div>
 
 			</div>

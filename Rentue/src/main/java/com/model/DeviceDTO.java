@@ -19,6 +19,12 @@ public class DeviceDTO {
 		this.rent_state = rent_state;
 		this.broken = broken;
 	}
+	
+	public DeviceDTO(int device_num) {
+		super();
+		this.device_num = device_num;
+	
+	}
 
 	public int  getDevice_num() {
 		return device_num;
