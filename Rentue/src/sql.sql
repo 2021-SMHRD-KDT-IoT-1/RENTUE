@@ -113,3 +113,5 @@ insert into device values(device_num.nextval, 'test', 'B', 'F', 'F');
 select * from device where rent_id='test';
 select * from rent_member where ct_id='dolmeori';
 
+insert into rent_member values('admin', 111, '스마트렌트', '563-88-00950', '광주 동구 예술길 31-15', 'dolmeori');
+
