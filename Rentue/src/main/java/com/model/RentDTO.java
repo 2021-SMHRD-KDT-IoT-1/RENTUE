@@ -35,7 +35,12 @@ public class RentDTO {
 		this.rent_id = rent_id;
 		this.rent_pw = rent_pw;
 	}
-
+	public RentDTO(String rent_id) {
+		super();
+		this.rent_id = rent_id;
+		
+	}
+	
 	public String getRent_id() {
 		return rent_id;
 	}

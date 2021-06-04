@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.DeviceDAO"%>
+<%@page import="com.model.DeviceDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -39,6 +42,7 @@
 
 
 
+
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
@@ -57,7 +61,8 @@
 			  <input   type="radio" name="member" value="Ct_member">관제소</span>
 			  
 		<span> ID<input type ="text" name ="id" id = "id"></span>
-		<span>PW<input type ="password" name ="pw"  id="pw"></span>
+		<span> PW<input type ="password" name ="pw" id ="pw"></span>
+	
 		
 		<div><a id="joinbutton" href="join.jsp" class="button primary small">회원가입</a>
 		<input type="button"  id="hidebtn" value="확인" class="button small"  onclick="button_ps()"></div>

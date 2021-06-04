@@ -103,11 +103,11 @@ insert into ct_member values('goraebul', 111, '고래불해수욕장', '경북 영덕군 병�
 insert into ct_member values('gyeongpo', 111, '경포해변', '강원 강릉시 장해로 514', 128.907369, 37.8056863);
 insert into ct_member values('jeongdongjin', 111, '정동진해수욕장', '강원 강릉시 강동면 정동진리 64-3', 129.027017, 37.6843303);
 
-insert into rent_member values('test', 111, '스마트렌트', '563-88-00950', '광주 동구 예술길 31-15', 'dolmeori');
+insert into rent_member values('admin', 111, '스마트렌트', '563-88-00950', '광주 동구 예술길 31-15', 'dolmeori');
 insert into rent_member values('rent', 111, '돌머리렌트', '531-77-05796', '전남 함평군 함평읍 돌머리길 355-177', 'dolmeori');
 
 -- A:튜브, B:핸디 라 가정
-insert into device values(device_num.nextval, 'test', 'A', 'F', 'F');
+insert into device values(device_num.nextval, 'admin', 'A', 'F', 'F');
 insert into device values(device_num.nextval, 'test', 'B', 'F', 'F');
 
 select * from device where rent_id='test';

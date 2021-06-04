@@ -87,7 +87,7 @@ public class RentDAO {
 			psmt.setString(1, dto.getRent_id());
 			psmt.setString(2, dto.getRent_pw());
 			rs = psmt.executeQuery();
-			System.out.println(rs);
+			
 			if (rs.next()) {
 				System.out.println("1");
 				String rent_id = rs.getString(1);
