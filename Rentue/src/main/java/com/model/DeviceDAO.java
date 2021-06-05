@@ -50,7 +50,7 @@ public class DeviceDAO {
 
 		conn();
 
-		String sql = "insert into Device values(devive_num.nextval, ?, ?, ?, ?)";
+		String sql = "insert into Device values(device_num.nextval, ?, ?, ?, ?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
