@@ -6,7 +6,6 @@
 <style>
 
 /* wave 효과 */
-/*클래스 wave를 불러오면 화면이 깨짐*/
 .wave{
   width:1000px;
   height: 1000px;
@@ -19,70 +18,6 @@ li {
 	list-style: none;
 }
 
-#modal.modal-overlay {
-	/*display: none;*/
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	display: none;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background: rgba(255, 255, 255, 0.25);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(1.5px);
-	-webkit-backdrop-filter: blur(1.5px);
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-#modal .modal-window {
-	background: rgba(69, 139, 197, 0.70);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(13.5px);
-	-webkit-backdrop-filter: blur(13.5px);
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
-	width: 600px;
-	height: 700px;
-	position: relative;
-	top: -100px;
-	padding: 10px;
-}
-
-#modal .title {
-	padding-left: 10px;
-	display: inline;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
-}
-
-#modal .title h2 {
-	display: inline;
-}
-
-#modal .close-area {
-	display: inline;
-	float: right;
-	padding-right: 10px;
-	cursor: pointer;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
-}
-
-#modal .content {
-	margin-top: 20px;
-	padding: 0px 10px;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
-}
-
-
-
-#btn-modal {
-	margin: 2em;
 
 </style>
 <head>
@@ -124,6 +59,7 @@ li {
 	<section id="sidebar">
 		<div class="inner">
 			<ul class="actions small">
+			RENTUE
 				<li><a href="#" class="button small">홈으로</a></li>
 				<!-- <li><a href="#" class="button primary small">로그인</a></li> -->
 				<li id="displayselect"><input type="button" id="showbtn" value="로그인" class="button primary small"></li>
@@ -164,6 +100,11 @@ li {
 		</div>
 	</section>
 
+	
+	
+	
+	
+	
 	<!-- Wrapper -->
 	<div id="wrapper">
 
@@ -179,7 +120,38 @@ li {
 				
 			</div>
 
+		<!-- 회원가입창 모달창으로 뜸 -->
+			<div id="modal" class="modal-overlay" style="position: absolute;">
+				<div class="modal-window">
+					<div class="title">
+						<div align="center" style = "float:left; margin-right:12.5em; margin-left:2em; margin-top:1em;">Let's Rentue-Member!</div>
+						<div class="close-area" style = "float:right;">X</div>
+					</div>
+					<div class="content">
+						<p>
+						<div>
+						<li><input type="radio" name="member" value="Rent_member" checked>렌탈업체 <input type="radio" name="member" value="Ct_member">관제소</li>
+						<li><input type="text" placeholder="ID를 입력하세요" id="id"></li>
+						<li><span></span></li>
 
+						<!--이미 있는 아이디 입니다 or 멋진 아이디네요!-->
+
+						<li><input type="password" placeholder="PW를 입력하세요" id="pw"></li>
+						<!-- 관제소 선택시에는 업체명과 사업자번호가 비활성화 되어야 한다 -->
+
+						<li><input type="text" placeholder="업체명를 입력하세요" id="rent_name"></li>
+						<li id="r_num"><input type="text" placeholder="사업자번호를 입력하세요" id="rent_num"></li>
+						<li><input type="text" id="sample5_address" placeholder="주소를 검색하세요"> <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"></li>
+						<li id="select"><select id="targetSel">
+								<option>소속 관제소 설정</option>
+						</select>
+							<button id="search">가까운 관제소 찾기</button></li>
+						<li><button id="submit" type="button" onclick="button_join()">JOIN US</button></li>
+						<div id="map" style="width: 170px; height: 170px; margin-top: -100px; float: right; display: none"></div>
+						</div>
+						
+						</p>
+		
 			
 		</section>
 
