@@ -4,6 +4,17 @@
 <!DOCTYPE html>
 <html>
 <style>
+
+/* wave 효과 */
+/*클래스 wave를 불러오면 화면이 깨짐*/
+.wave{
+  width:1000px;
+  height: 1000px;
+  background-image:url('images/main1.png');
+  background-size:100%;
+  position:relative;
+}
+
 li {
 	list-style: none;
 }
@@ -67,6 +78,12 @@ li {
 	text-shadow: 1px 1px 2px gray;
 	color: white;
 }
+
+
+
+#btn-modal {
+	margin: 2em;
+
 </style>
 <head>
 <meta charset="EUC-KR">
@@ -96,12 +113,9 @@ li {
 		</script>
 
 </head>
-<style>
-#btn-modal {
-	margin: 2em;
-}
-</style>
+
 <body class="is-preload">
+
 
 
 
@@ -153,56 +167,20 @@ li {
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<!-- <section>
-					<div id = "join">
-						<p>회원가입 창</p>
-					</div>
-				</section> -->
 
 		<!-- Intro -->
 		<!-- <section id="intro" class="wrapper style1 fullscreen fade-up"> -->
-		<section id="intro" class="wrapper style1 fullscreen fade-up">
-
-			<div class="inner">
-				<h1>Rentue</h1>
-				<p>사진넣을거에오오오</p>
+		<section id="intro" class="wrapper style1 fullscreen fade-up"
+		style="background-image: url('images/main1.png')">
+		
+	
+			<div class="inner wave" width="100%"; height ="100%";>
+					
+				
 			</div>
 
 
-			<!-- 회원가입창 모달창으로 뜸 -->
-			<div id="modal" class="modal-overlay" style="position: absolute;">
-				<div class="modal-window">
-					<div class="title">
-						<h2>Let's Rentue-Member!</h2>
-					</div>
-					<div class="close-area">X</div>
-					<div class="content">
-						<p>
-						<li><input type="radio" name="member" value="Rent_member" checked>렌탈업체 <input type="radio" name="member" value="Ct_member">관제소</li>
-						<li><input type="text" placeholder="ID를 입력하세요" id="id"></li>
-						<li><span></span></li>
-
-						<!--이미 있는 아이디 입니다 or 멋진 아이디네요!-->
-
-						<li><input type="password" placeholder="PW를 입력하세요" id="pw"></li>
-						<!-- 관제소 선택시에는 업체명과 사업자번호가 비활성화 되어야 한다 -->
-
-						<li><input type="text" placeholder="업체명를 입력하세요" id="rent_name"></li>
-						<li id="r_num"><input type="text" placeholder="사업자번호를 입력하세요" id="rent_num"></li>
-						<li><input type="text" id="sample5_address" placeholder="주소를 검색하세요"> <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"></li>
-						<li id="select"><select id="targetSel">
-								<option>소속 관제소 설정</option>
-						</select>
-							<button id="search">가까운 관제소 찾기</button></li>
-						<li><button id="submit" type="button" onclick="button_join()">JOIN US</button></li>
-						</ul>
-						<div id="map" style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-
-
-
-
-
-						</p>
+			
 		</section>
 
 		<!-- One -->
@@ -288,19 +266,43 @@ li {
 	</footer>
 
 	<!-- Scripts -->
+	
 	<script src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.ripples.js"></script>
+<script src="http://www.jqueryscript.net/demo/jQuery-Plugin-For-Water-Ripple-Animation-ripples/js/jquery.ripples.js">
+</script>
+	
+	
+	
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	
 
 
 	<!-- 주소 선택시 지도 뜨는 코드 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=본인앱키주소입력하기!!!!!&libraries=services"></script> -->
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bf4d86dadf87fc45ddad1e9b45a01dd&libraries=services"></script>
+
+		<script type="text/javascript">
+			
+$(document).ready(function() {
+	try {
+		$('.wave').ripples({
+			resolution: 256,
+			perturbance: 0.04
+		});
+	}
+	catch (e) {
+		$('.error').show().text(e);
+	}
+});
+		</script>
+
 
 	<script>
 			

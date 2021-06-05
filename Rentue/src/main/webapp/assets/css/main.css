@@ -6,6 +6,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -3206,7 +3207,7 @@ input, select, textarea {
 	}
 
 		.wrapper > .inner {
-			padding: 5em 5em 3em 5em ;
+			/*padding: 5em 5em 3em 5em ;*/
 			max-width: 100%;
 			width: 75em;
 		}
@@ -3239,11 +3240,16 @@ input, select, textarea {
 			background-color: #261c3e;
 		}
 
+		/*메인 색 바꾸는 곳*/
 		.wrapper.style1 {
-			background-color: #5e42a6;
+			
+			
+			background-color: #493382;
 		}
-
+	
+		/*footer 색 바꾸는 곳*/
 		.wrapper.style1-alt {
+		
 			background-color: #493382;
 		}
 
@@ -3461,6 +3467,9 @@ input, select, textarea {
 						}
 
 		}
+
+
+
 
 /* Wrapper (main) */
 
