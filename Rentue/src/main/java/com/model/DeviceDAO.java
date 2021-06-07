@@ -95,61 +95,50 @@ public class DeviceDAO {
 
 	}
 	
-	public String rent_state(int device_num) {
-		String rent_state = null;
+	public int state_update(String device_num) {
+		
 		conn();
-		String sql = "select rent_state from Device where device_num = ?";
 
 		try {
+			String sql = "update device set rent_state = 'T' where device_num = ?";
 
 			psmt = conn.prepareStatement(sql);
-
-			psmt.setInt(1, device_num);
+			psmt.setString(1, device_num);
 		
 
-			rs = psmt.executeQuery();
+		cnt= psmt.executeUpdate();
 
-			if (rs.next()) {
-				rent_state = rs.getString(1);				
-			}
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
-
 			close();
-
 		}
-		return rent_state;
-
+		
+		return cnt;
 	}
 
-	public String broken(int device_num) {
-		String broken_state = null;
+	public int broken_update(String device_num) {
+		
 		conn();
-		String sql = "select broken from Device where device_num = ?";
 
 		try {
 
+			String sql = "update device set broken = 'T' where device_num= ?";
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setInt(1, device_num);
+			psmt.setString(1,device_num);
 
-			rs = psmt.executeQuery();
+			
 
-			if (rs.next()) {
-				broken_state = rs.getString(1);
-			}
+			cnt= psmt.executeUpdate();
+
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
-
 			close();
-
 		}
-		return broken_state;
-
+		
+		return cnt;
 	}
 
 	public ArrayList<DeviceDTO> select(String id, String device_typet) {
