@@ -15,7 +15,7 @@ li{
 </head>
 <body>
 
-	<h5>회원가입 페이지입니다.</h5>
+	<h5>회원가입 페이지입니다.</h5> 
 	<ul>
 		<li><input type="radio" name="member" value="Rent_member" checked>렌탈업체
 			<input type="radio" name="member" value="Ct_member">관제소</li>
