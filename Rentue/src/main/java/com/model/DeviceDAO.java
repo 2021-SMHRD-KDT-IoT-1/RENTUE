@@ -50,11 +50,13 @@ public class DeviceDAO {
 
 		conn();
 
+
 		String sql = null;
 		if (targetSel.equals("A")) {
 			sql = "insert into Device(device_num, rent_id, device_type) values(handi_num.nextval, ?, ?)";
 		} else  
 			sql = "insert into Device(device_num, rent_id, device_type) values(device_num.nextval, ?, ?)";
+
 
 		try {
 			psmt = conn.prepareStatement(sql);

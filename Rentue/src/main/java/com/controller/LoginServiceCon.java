@@ -21,9 +21,13 @@ public class LoginServiceCon extends HttpServlet {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("EUC-KR");
+		
 		String member = request.getParameter("member");
 		String id = request.getParameter("id"); 
 		String pw = request.getParameter("pw");
+		
+		System.out.println(id);
+		System.out.println(pw);
 		
 	
 		
