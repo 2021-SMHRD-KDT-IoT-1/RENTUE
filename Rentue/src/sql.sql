@@ -20,16 +20,26 @@ create table rent_member(
    REFERENCES ct_member(ct_id) ON DELETE SET NULL
 );
 
+delete from device;
+commit;
+
 create table device(
 
-device_num number(20) PRIMARY KEY,
+device_num number(20),
 rent_id varchar2(20),
 device_type char(1),
 rent_state char(1) default 'F',
 broken char(1) default 'F',
 CONSTRAINT fk_rent_member_to_device FOREIGN KEY(rent_id)
-REFERENCES rent_member(rent_id) ON DELETE SET NULL
+REFERENCES rent_member(rent_id) ON DELETE SET NULL,
+primary key (device_num, device_type)
 );
+
+
+select * from device order by device_num;
+
+
+select * from device;
 
 create table contact (
 
@@ -41,7 +51,11 @@ create table contact (
  
 );
 
+drop sequence device_num;
+drop sequence handi_num;
 create sequence device_num increment by 1 start with 1;
+create sequence handi_num increment by 1 start with 1;
+
 
 
 CREATE OR REPLACE FUNCTION RADIANS(nDegrees IN NUMBER) RETURN NUMBER DETERMINISTIC IS
@@ -106,10 +120,29 @@ insert into ct_member values('jeongdongjin', 111, '정동진해수욕장', '강원 강릉시
 insert into rent_member values('admin', 111, '스마트렌트', '563-88-00950', '광주 동구 예술길 31-15', 'dolmeori');
 insert into rent_member values('rent', 111, '돌머리렌트', '531-77-05796', '전남 함평군 함평읍 돌머리길 355-177', 'dolmeori');
 
+
+
+select * from user_sequences;
+drop sequence device_num;
+
+create sequence device_num 
+	increment by 1 
+	start with 1 
+	minvalue 1 
+	maxvalue 999999999 
+	nocycle 
+	nocache
+	;
+	
+	
+
+
 -- A:튜브, B:핸디 라 가정
-insert into device values(device_num.nextval, 'admin', 'A', 'F', 'F');
+insert into device values(device_num.nextval, 'admin', 'A', 'T', 'T');
 insert into device values(device_num.nextval, 'test', 'B', 'F', 'F');
 
 select * from device where rent_id='test';
 select * from rent_member where ct_id='dolmeori';
+
+insert into rent_member values('admin', 111, '스마트렌트', '563-88-00950', '광주 동구 예술길 31-15', 'dolmeori');
 

@@ -26,6 +26,10 @@ public class DeviceDTO {
 	
 	}
 
+	public DeviceDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int  getDevice_num() {
 		return device_num;
 	}

@@ -46,19 +46,21 @@ public class DeviceDAO {
 		}
 	}
 
-	public int insert(DeviceDTO dto) {
+	public int insert(String rent_id, String targetSel) {
 
 		conn();
 
-		String sql = "insert into Device values(devive_num.nextval, ?, ?, ?, ?)";
+		String sql = null;
+		if (targetSel.equals("A")) {
+			sql = "insert into Device(device_num, rent_id, device_type) values(handi_num.nextval, ?, ?)";
+		} else  
+			sql = "insert into Device(device_num, rent_id, device_type) values(device_num.nextval, ?, ?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, dto.getRent_id());
-			psmt.setString(2, dto.getDevice_type());
-			psmt.setString(3, dto.getRent_state());
-			psmt.setString(4, dto.getBroken());
+			psmt.setString(1, rent_id);
+			psmt.setString(2, targetSel);
 
 			cnt = psmt.executeUpdate();
 
@@ -148,16 +150,24 @@ public class DeviceDAO {
 
 	}
 
-	public ArrayList<DeviceDTO> select(String id) {
+	public ArrayList<DeviceDTO> select(String id, String device_typet) {
 		
 		
 		list = new ArrayList<DeviceDTO>();
 		conn();
 
 		try {
-			String sql = "select * from Device where rent_id=?";
+			String sql = "select * from Device where rent_id=? ";
+			if (device_typet != null) {
+				sql = sql.concat("and device_type=? ");
+			}
+			sql = sql.concat("order by device_num asc");
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
+			if (device_typet != null) {
+				sql = sql.concat("and device_type=?");
+				psmt.setString(2, device_typet);
+			}
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
