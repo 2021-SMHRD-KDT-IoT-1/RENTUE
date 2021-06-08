@@ -113,7 +113,7 @@ public class RentDAO {
 	// Update
 	public int update(RentDTO dto) {
 		conn();
-		String sql = "update rent_member set rent_pw =? ,rent_name=?, rent_num=?, rent_addr=? where rent_id=?";
+		String sql = "update rent_member set rent_pw=?, rent_name=?, rent_num=?, rent_addr=?, ct_id=? where rent_id=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -121,7 +121,8 @@ public class RentDAO {
 			psmt.setString(2, dto.getRent_name());
 			psmt.setString(3, dto.getRent_num());
 			psmt.setString(4, dto.getRent_addr());
-			psmt.setString(5, dto.getRent_id());
+			psmt.setString(5, dto.getCt_id());
+			psmt.setString(6, dto.getRent_id());
 			
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
