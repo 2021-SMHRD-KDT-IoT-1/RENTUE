@@ -165,7 +165,7 @@ public class CtDAO {
 
 	public CtDTO selectOne(CtDTO dto) {
 		conn();
-		String sql = "select * from ct_member where id = ? ";
+		String sql = "select * from ct_member where ct_id = ? ";
 
 		try {
 
@@ -195,6 +195,36 @@ public class CtDAO {
 
 		}
 		return dto;
+
+	}
+	
+	public String setCt(String ct_id) {
+		String ct_name = null;
+		
+		conn();
+		String sql = "select ct_name from ct_member where ct_id = ? ";
+
+		try {
+
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, ct_id);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+						
+				ct_name = rs.getString(1);
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			close();
+
+		}
+		return ct_name;
 
 	}
 
