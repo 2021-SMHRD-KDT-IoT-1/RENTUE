@@ -138,10 +138,10 @@ create sequence device_num
 
 
 -- A:튜브, B:핸디 라 가정
-insert into device values(device_num.nextval, 'admin', 'A', 'T', 'T');
-insert into device values(device_num.nextval, 'test', 'B', 'F', 'F');
+insert into device values(device_num.nextval, 'test', 'A', 'F', 'T');
+insert into device values(device_num.nextval, 'test', 'B', 'F', 'T');
 
-select * from device where rent_id='test';
+select * from device order by device_num;
 select * from rent_member where ct_id='dolmeori';
 
 insert into rent_member values('admin', 111, '스마트렌트', '563-88-00950', '광주 동구 예술길 31-15', 'dolmeori');

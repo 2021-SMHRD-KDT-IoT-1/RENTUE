@@ -12,6 +12,7 @@
 	<%
 	RentDTO dto = null;
 	String ct_name = null;
+	request.setCharacterEncoding("EUC-KR");
 	if(session.getAttribute("dto") != null){
 		dto = (RentDTO) session.getAttribute("dto");
 		String ct_id = dto.getCt_id();
@@ -106,23 +107,16 @@
 		}
 
 		function button_update() {
-			id = <%=dto.getRent_id()%>;
-			pw = $('#pw').val();
-			rent_name = $('#rent_name').val();
-			rent_num = $('#rent_num').val();
-			locations = $('#sample5_address').val();
-			targetSel = $('#targetSel').val();
-
 			$.ajax({
 				url : 'RentUpdateServiceCon',
 				type : 'post',
 				data : {
-					id : id,
-					pw : pw,
-					rent_name : rent_name,
-					rent_num : rent_num,
-					locations : locations,
-					targetSel : targetSel
+					'id' : '<%=dto.getRent_id()%>',
+					'pw' : $('#pw').val(),
+					'rent_name' : $('#rent_name').val(),
+					'rent_num' : $('#rent_num').val(),
+					'locations' : $('#sample5_address').val(),
+					'targetSel' : $('#targetSel').val()
 				},
 
 				success : function() {

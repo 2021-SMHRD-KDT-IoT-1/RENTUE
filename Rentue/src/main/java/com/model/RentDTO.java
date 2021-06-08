@@ -10,18 +10,18 @@ public class RentDTO {
 	private String rent_num;
 	private String rent_addr;
 	private String ct_id;
-	private String admin;
+//	private String admin;
 	
-	public RentDTO(String rent_id, String rent_pw, String rent_name, String rent_num, String rent_addr, String ct_id, String admin) {
-		super();
-		this.rent_id = rent_id;
-		this.rent_pw = rent_pw;
-		this.rent_name = rent_name;
-		this.rent_num = rent_num;
-		this.rent_addr = rent_addr;
-		this.ct_id = ct_id;
-		this.admin = admin;
-	}
+//	public RentDTO(String rent_id, String rent_pw, String rent_name, String rent_num, String rent_addr, String ct_id, String admin) {
+//		super();
+//		this.rent_id = rent_id;
+//		this.rent_pw = rent_pw;
+//		this.rent_name = rent_name;
+//		this.rent_num = rent_num;
+//		this.rent_addr = rent_addr;
+//		this.ct_id = ct_id;
+//		this.admin = admin;
+//	}
 	
 	public RentDTO(String rent_id, String rent_pw, String rent_name, String rent_num, String rent_addr, String ct_id) {
 		super();
@@ -102,12 +102,12 @@ public class RentDTO {
 		this.rent_addr = rent_addr;
 	}
 
-	public String getAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(String admin) {
-		this.admin = admin;
-	}
-	
+//	public String getAdmin() {
+//		return admin;
+//	}
+//
+//	public void setAdmin(String admin) {
+//		this.admin = admin;
+//	}
+//	
 }

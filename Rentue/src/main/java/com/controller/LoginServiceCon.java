@@ -30,8 +30,9 @@ public class LoginServiceCon extends HttpServlet {
 		System.out.println(pw);
 		
 	
-		
-		if(member.equals("Rent_member")) {
+		if(id.equals("admin")&&pw.equals("123")) {
+			System.out.println("관리자 로그인");
+		}else if(member.equals("Rent_member")) {
 			
 			RentDTO dto = new RentDTO(id, pw);
 			RentDAO dao = new RentDAO();

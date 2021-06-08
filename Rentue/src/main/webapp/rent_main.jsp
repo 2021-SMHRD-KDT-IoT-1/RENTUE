@@ -16,7 +16,7 @@
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
-<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=c396fe0efc7b0e5f37418f17f1fd034d'></script>
+<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a'></script>
 </head>
 <body class="is-preload">
 
@@ -24,7 +24,7 @@
 	RentDTO dto = (RentDTO) session.getAttribute("dto");
 	DeviceDAO dao = new DeviceDAO();
 	ArrayList<DeviceDTO> list = dao.select(dto.getRent_id(), null);
-	String admin = dto.getAdmin();
+	/* String admin = dto.getAdmin(); */
 	%>
 
 
@@ -37,8 +37,7 @@
 					onclick="window.open('mypage.jsp', '마이페이지', 'width=900px, height=1200px')"
 					class="button primary small"></li>
 				<li>
-					<!-- 로그인 한 상태이니까 로그인 버튼이 로그아웃으로 바뀌어야 함 --> <input type="button"
-					value="로그인" onclick="location.href='LogoutServiceCon'"
+					<input type="button" value="로그아웃" onclick="location.href='LogoutServiceCon'"
 					class="button primary small">
 				</li>
 
@@ -93,7 +92,7 @@
 						<option value="B" name="Rent_id">튜브형</option>
 					</select>
 					<button id="submit" type="button" onclick="button_ps()">추가등록</button>
-					<button>삭제</button>
+					<input type="button" id="chk_delbtn" value="체크항목 삭제" />
 
 
 				</div>
@@ -108,10 +107,10 @@
 						<option value="not-available">대여중인 기기</option>
 						<option value="disable">고장 기기</option>
 					</select>
-					<% if (admin.equals("Y")) { %>
+					<%-- <% if (admin.equals("Y")) { %> --%>
 						<input type="text" style="width: 200px; float: left; margin-left: 20px;"/>
 						<input type="button" id ="search_btn" style="width: 200px; margin-left: 20px; float: left;" value="아이디 검색"/><br>
-					<% } %>
+					<%-- <% } %> --%>
 					</div>
 
 					<table id="kkk">
@@ -149,7 +148,7 @@
 						}
 						%>
 					</table>
-					<input type="button" id="chk_delbtn" value="체크항목 삭제" />
+					
 				</div>
 
 			</section>

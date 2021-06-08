@@ -151,16 +151,22 @@ public class DeviceDAO {
 		conn();
 
 		try {
-			String sql = "select * from Device where rent_id=? ";
-			if (device_typet != null) {
-				sql = sql.concat("and device_type=? ");
+			String sql = "select * from Device ";
+			if (id != null) {
+				sql = sql.concat("where rent_id=? ");
+				if (device_typet != null) {
+					sql = sql.concat("and device_type=? ");
+				}
 			}
 			sql = sql.concat("order by device_num asc");
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			if (device_typet != null) {
-				sql = sql.concat("and device_type=?");
-				psmt.setString(2, device_typet);
+			if (id != null) {
+				sql = sql.concat("where rent_id=? ");
+				psmt.setString(1, id);
+				if (device_typet != null) {
+					sql = sql.concat("and device_type=?");
+					psmt.setString(2, device_typet);
+				}
 			}
 			rs = psmt.executeQuery();
 
@@ -220,7 +226,7 @@ public class DeviceDAO {
 		return dto;
 
 	}
-
-	}
+	
+}
 
 

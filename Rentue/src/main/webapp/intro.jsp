@@ -270,7 +270,7 @@ li {
 	<!-- 주소 선택시 지도 뜨는 코드 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=본인앱키주소입력하기!!!!!&libraries=services"></script> -->
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c396fe0efc7b0e5f37418f17f1fd034d&libraries=services"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a&libraries=services"></script>
 
 		<script type="text/javascript">
 			
@@ -478,12 +478,12 @@ $(document).ready(function() {
 		 	   				alert('로그인에 실패하였습니다.')
 		 	   				url = 'intro.jsp';
 		 	   			}else{
-		 	   				if(member=='Rent_member'){
+		 	   				if(id=='admin'){
+	 	   						url = 'admin_main.jsp';
+	 	   					}else if(member=='Rent_member'){
 		 	   					url = 'rent_main.jsp';
 		 	   				}else if(member=='Ct_member'){
 		 	   					url = 'ct_main.jsp';
-		 	   				}else if(member=='admin'){
-		 	   					url = 'admin_main.jsp';
 		 	   				}
 		 	   			}
 		            	location.replace(url);
