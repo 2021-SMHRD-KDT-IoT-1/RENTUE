@@ -113,14 +113,16 @@
 
 					<table id="kkk">
 						<!-- 첫번째 행 -->
-						<tr>
+						<tr>						
 							<td>기기번호</td>
 							<td>타입</td>
 							<td>렌탈현황</td>
 							<td>고장여부</td>
-							<td>비고</td>
 							<td>렌탈</td>
 							<td>고장</td>
+							<td>삭제</td>
+							
+						
 						</tr>
 						<!-- 두번째 행부터는 내용 들어가야 함 -->
 
@@ -128,14 +130,14 @@
 						<%
 						for (int i = 0; i < list.size(); i++) {
 						%>
-						<tr class='drow'>
+						<tr class='drow'>						
 							<td><%=list.get(i).getDevice_num()%></td>
 							<td><%=list.get(i).getDevice_type()%></td>
 							<td><%=list.get(i).getRent_state()%></td>
 							<td><%=list.get(i).getBroken()%></td>
-							<td><a href="DeleteServiceCon?device_num=<%=list.get(i).getDevice_num()%>"></a>삭제</td>
 							<td><a href="Device_State_Update?device_num=<%=list.get(i).getDevice_num()%>">렌탈</a></td>
 							<td><a href="Device_broken_update?device_num=<%=list.get(i).getDevice_num()%>">고장</a></td>
+							<td><a href="DeleteServiceCon?device_num=<%=list.get(i).getDevice_num()%>"></a>삭제</td>
 						</tr>
 						<%
 						}
@@ -284,13 +286,14 @@
 							        success: function(jsonList){
 							        	console.log(jsonList);
 							        	$.each(jsonList, function(i, v) {
+							        	
 											var val = "<tr class='drow'><td>" + v.device_num + "</td>";
 											val += "<td>" + v.device_type+"</td>";
 											val += "<td>" + v.rent_state+"</td>";
 											val += "<td>" + v.broken+"</td>";
-											val += "<td><a href='DeleteServiceCon?device_num=" + v.device_num + "'>삭제</a></td>";
 											val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
-											val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td></tr>";
+											val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
+											val += "<td><a href='DeleteServiceCon?device_num=" + v.device_num + "'>삭제</a></td></tr>";
 											$("#kkk").append(val);
 							        	});
 							        	// console.log(data);

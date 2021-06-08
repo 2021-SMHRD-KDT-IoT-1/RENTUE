@@ -52,7 +52,7 @@
 		<section id="intro" class="wrapper style1 fullscreen fade-up">
 			<div class="inner">
 				<h1>Rentue-°üÁ¦¼Ò</h1>
-				<div id="map" style="width: 600px; height: 400px;"></div>
+				<div id="map" style="width: 800px; height: 600px;"></div>
 
 			</div>
 		</section>
