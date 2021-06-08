@@ -2393,10 +2393,10 @@ input, select, textarea {
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		-ms-appearance: none;
-		appearance: none;
 		display: block;
 		float: left;
 		margin-right: -2em;
+		appearance: none;
 		opacity: 0;
 		width: 1em;
 		z-index: -1;

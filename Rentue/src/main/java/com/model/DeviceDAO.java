@@ -100,7 +100,10 @@ public class DeviceDAO {
 		conn();
 
 		try {
-			String sql = "update device set rent_state = 'T' where device_num = ?";
+			String sql = 
+			"update device "
+			+ "set rent_state = (case when rent_state='T' then 'F' else 'T' end)"
+			+ "where device_num = ?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, device_num);
@@ -123,7 +126,7 @@ public class DeviceDAO {
 
 		try {
 
-			String sql = "update device set broken = 'T' where device_num= ?";
+			String sql = "update device set broken = (case when broken = 'T' then 'F' else 'T' end) where device_num= ?";
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1,device_num);

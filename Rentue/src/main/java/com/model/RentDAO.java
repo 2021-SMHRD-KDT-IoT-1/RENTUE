@@ -96,8 +96,9 @@ public class RentDAO {
 				String rent_num = rs.getString(4);
 				String rent_addr = rs.getString(5);
 				String ct_id = rs.getString(6);
+				String admin = rs.getString(7);
 				System.out.println(rent_id);
-				login_dto = new RentDTO(rent_id, rent_pw, rent_name, rent_num, rent_addr, ct_id);
+				login_dto = new RentDTO(rent_id, rent_pw, rent_name, rent_num, rent_addr, ct_id, admin);
 			}
 
 		} catch (SQLException e) {
@@ -186,7 +187,7 @@ public class RentDAO {
 				String rent_num = rs.getString(4);
 				String rent_addr = rs.getString(5);
 				String ct_id = rs.getString(6);
-
+				String admin = rs.getString(7);
 				dto = new RentDTO(rent_id, rent_pw, rent_name, rent_num, rent_addr, ct_id);
 			}
 		} catch (SQLException e) {

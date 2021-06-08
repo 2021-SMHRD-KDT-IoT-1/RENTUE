@@ -24,6 +24,7 @@
 	RentDTO dto = (RentDTO) session.getAttribute("dto");
 	DeviceDAO dao = new DeviceDAO();
 	ArrayList<DeviceDTO> list = dao.select(dto.getRent_id(), null);
+	String admin = dto.getAdmin();
 	%>
 
 
@@ -86,7 +87,7 @@
 
 			<label>
 				<div>
-
+					
 					<select id="targetSel" style="width: 200px; display: inline;">
 						<option value="A" name="Rent_id">핸디형</option>
 						<option value="B" name="Rent_id">튜브형</option>
@@ -100,27 +101,30 @@
 			<section>
 
 				<div>
-					<select id="filter" style="width: 200px;">
+					<div>
+					<select id="filter" style="width: 200px; float: left;">
 						<option value="all">전체 기기</option>
 						<option value="available">대여가능한 기기</option>
 						<option value="not-available">대여중인 기기</option>
 						<option value="disable">고장 기기</option>
-				</div>
-
-				<div overflow="scroll">
-
 					</select>
+					<% if (admin.equals("Y")) { %>
+						<input type="text" style="width: 200px; float: left; margin-left: 20px;"/>
+						<input type="button" id ="search_btn" style="width: 200px; margin-left: 20px; float: left;" value="아이디 검색"/><br>
+					<% } %>
+					</div>
 
 					<table id="kkk">
 						<!-- 첫번째 행 -->
-						<tr>						
+						<tr>
+							<td>No.</td>			
 							<td>기기번호</td>
 							<td>타입</td>
 							<td>렌탈현황</td>
 							<td>고장여부</td>
 							<td>렌탈</td>
 							<td>고장</td>
-							<td>삭제</td>
+							<td><input type='checkbox' id="del_check_all" style='margin-right:0 !important; appearance: auto !important; opacity: 100 !important;'/>삭제</td>
 							
 						
 						</tr>
@@ -128,21 +132,24 @@
 
 
 						<%
-						for (int i = 0; i < list.size(); i++) {
+						for (int i=0; i<list.size(); i++) {
+							int rowNum = i+1;
 						%>
-						<tr class='drow'>						
+						<tr class='drow'>
+							<td><%=rowNum%></td>				
 							<td><%=list.get(i).getDevice_num()%></td>
 							<td><%=list.get(i).getDevice_type()%></td>
 							<td><%=list.get(i).getRent_state()%></td>
 							<td><%=list.get(i).getBroken()%></td>
 							<td><a href="Device_State_Update?device_num=<%=list.get(i).getDevice_num()%>">렌탈</a></td>
 							<td><a href="Device_broken_update?device_num=<%=list.get(i).getDevice_num()%>">고장</a></td>
-							<td><a href="DeleteServiceCon?device_num=<%=list.get(i).getDevice_num()%>"></a>삭제</td>
+							<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td>
 						</tr>
 						<%
 						}
 						%>
 					</table>
+					<input type="button" id="chk_delbtn" value="체크항목 삭제" />
 				</div>
 
 			</section>
@@ -235,35 +242,114 @@
 	<script src="assets/js/main.js"></script>
 	<script type="text/javascript">
 					$(document).ready(function() {
+						$("#del_check_all").on("click", function() {
+							$(document).find(".del_check").each(function (i, v) {
+								if ($(this).parent().parent().css("display") != "none") {
+									if ($("#del_check_all").is(":checked")) {
+										$(this).prop("checked", true);
+									} else {
+										$(this).prop("checked", false);
+									}
+								}
+							});
+						});
+						
+						$("#chk_delbtn").on("click", function() {
+							var del = new Array();
+							$(document).find(".del_check").each(function (i, v) {
+								if ($(this).parent().parent().css("display") != "none") {
+									if ($(this).is(":checked")) {
+										del.push($(this).parent().parent().find("td").eq(1).text());
+									}
+								}
+							});
+							console.log(del);
+							$.each(del, function(i, v) {
+								 $.ajax({
+									 	data: {
+									        'device_num' : v
+								        },
+								        url:'DeleteServiceCon',
+								        success: function() {
+											alert("삭제 성공~~ \n");							        	
+								        },
+								        error:function(a, b, c){
+								        	console.log(a);
+								        	console.log(b);
+								        	console.log(c);
+								            alert("에러 발생~~ \n");
+								    	}
+									});
+							});
+							 $.ajax({
+								 	data: {
+								        'gg' : '<%=dto.getRent_id()%>',
+								        'gg2' : $("#targetSel").val()
+							        },
+							        url:'SelectServiceCon',
+							        contentType : "application/json; charset:euc-kr",
+									dataType: "JSON",
+							        success: function(jsonList){
+							        	console.log(jsonList);
+							        	$.each(jsonList, function(i, v) {
+							        		var rowNum = i*1+1;
+											var val = "<tr class='drow'><td>" + rowNum + "</td>";
+											val += "<td>" + v.device_num + "</td>";
+											val += "<td>" + v.device_type+"</td>";
+											val += "<td>" + v.rent_state+"</td>";
+											val += "<td>" + v.broken+"</td>";
+											val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
+											val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
+											val += "<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td></tr>";
+											$("#kkk").append(val);
+							        	});
+							        	// console.log(data);
+							        	/* <a href='DeleteServiceCon?device_num=" + v.device_num + "'>삭제</a> */
+							        },
+							        error:function(a, b, c){
+							        	console.log(a);
+							        	console.log(b);
+							        	console.log(c);
+							            alert("에러 발생~~ \n");
+							    	}
+							});
+							 location.reload();
+						});
+						
 						
 						$("#filter").on("change", function() {
+							var ind = 1;
 							var filterType = $("#filter").val();
 							$("#kkk").find(".drow").each(function(i, v) {
 								switch (filterType) {
 									case "all":
-										$(this).show();
+										$(this).css("display", "table-row");
 										break;
 									case "available":
-										if ($(this).find("td").eq(2).text() == 'F') {
-											$(this).show();
+										if ($(this).find("td").eq(3).text() == 'F') {
+											$(this).css("display", "table-row");
 										} else {
-											$(this).hide();
+											$(this).css("display", "none");
 										}
 										break;
 									case "not-available":
-										if ($(this).find("td").eq(2).text() == 'T') {
-											$(this).show();
+										if ($(this).find("td").eq(3).text() == 'T') {
+											$(this).css("display", "table-row");
 										} else {
-											$(this).hide();
+											$(this).css("display", "none");
 										}
 										break;
 									case "disable":
-										if ($(this).find("td").eq(3).text() == 'T') {
-											$(this).show();
+										if ($(this).find("td").eq(4).text() == 'T') {
+											$(this).css("display", "table-row");
 										} else {
-											$(this).hide();
+											$(this).css("display", "none");
 										}
 										break;
+								}
+								var disp = $(this).css("display");
+								if (disp != "none") {
+									$(this).find("td").eq(0).text(ind++);
 								}
 							});
 						});
@@ -286,17 +372,19 @@
 							        success: function(jsonList){
 							        	console.log(jsonList);
 							        	$.each(jsonList, function(i, v) {
-							        	
-											var val = "<tr class='drow'><td>" + v.device_num + "</td>";
+							        		var rowNum = i*1+1;
+											var val = "<tr class='drow'><td>" + rowNum + "</td>";
+											val += "<td>" + v.device_num + "</td>";
 											val += "<td>" + v.device_type+"</td>";
 											val += "<td>" + v.rent_state+"</td>";
 											val += "<td>" + v.broken+"</td>";
 											val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
 											val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
-											val += "<td><a href='DeleteServiceCon?device_num=" + v.device_num + "'>삭제</a></td></tr>";
+											val += "<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td></tr>";
 											$("#kkk").append(val);
 							        	});
 							        	// console.log(data);
+							        	/* <a href='DeleteServiceCon?device_num=" + v.device_num + "'>삭제</a> */
 							        },
 							        error:function(a, b, c){
 							        	console.log(a);
