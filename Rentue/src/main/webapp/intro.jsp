@@ -18,6 +18,13 @@ li {
 	list-style: none;
 }
 
+#logo {
+	margin-left: 1.7em;
+	width: 290px;
+	heigh: 300px;
+}
+
+
 
 </style>
 <head>
@@ -57,14 +64,18 @@ li {
 
 	<!-- Sidebar -->
 	<section id="sidebar">
+			<div style="float:left;"><p style="text-align:left; "><img src="images/logo2.png" id = "logo"></p><div>
 		<div class="inner">
-			<ul class="actions small">
-			RENTUE
-				<li><a href="#" class="button small">홈으로</a></li>
+			
+			<div style = "align: right; margin-bottom: 2em;">
+				<li id="displayselect"><input type="button" id="showbtn" value="로그인" class="button small"></li>
+			<!-- <ul class="actions small"> -->
+				<!-- <li><a href="#" class="button small">홈으로</a></li> -->
 				<!-- <li><a href="#" class="button primary small">로그인</a></li> -->
-				<li id="displayselect"><input type="button" id="showbtn" value="로그인" class="button primary small"></li>
-
-			</ul>
+			<!-- </ul> -->
+			</div>
+		
+			
 
 			<!-- 숨겨져 있는 로그인 영역부분 -->
 			<div style="display: none;" id="displaydiv">
@@ -157,14 +168,14 @@ li {
 
 		<!-- One -->
 		<section id="one" class="wrapper style2 fullscreen spotlights">
-			<section>
+			<section style="padding: 2em !important;">
 				<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
 				<div class="content">
 					<div class="inner">
 						<h2>제품소개</h2>
 						<p>제품설명란</p>
 						<ul class="actions">
-							<li><a href="join.jsp" class="button">Join Us</a></li>
+							<li><a href="modal" class="button scrolly">Join Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -172,8 +183,9 @@ li {
 		</section>
 
 		<!-- Two -->
-		<section id="two" class="wrapper style1 fade-up">
+		<section id="two" class="wrapper style1 fullscreen fade-up">
 			<div class="inner">
+				<section style="padding: 2em !important;">
 				<h2>Get in touch</h2>
 				<p>문의 사항</p>
 				<div class="split style1">
@@ -200,14 +212,14 @@ li {
 						<ul class="contact">
 							<li>
 								<h3>Address</h3> <span>
-									31-15 광주아트센터 3층<br /> 광주광역시, 동구 예술길<br /> 대한민국
+									31-15 광주아트센터 3층 B<br /> 광주광역시, 동구 예술길<br /> 대한민국
 								</span>
 							</li>
 							<li>
 								<h3>Email</h3> <a href="#">Rentue@rentue.co.kr</a>
 							</li>
 							<li>
-								<h3>Phone</h3> <span>(000) 000-0000</span>
+								<h3>Phone</h3> <span>(062) 333-6565</span>
 							</li>
 							<li>
 								<h3>Social</h3>
@@ -220,6 +232,7 @@ li {
 								</ul>
 							</li>
 						</ul>
+					</section>
 					</section>
 				</div>
 			</div>
