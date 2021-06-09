@@ -218,7 +218,7 @@ li {
 								<h3>Email</h3> <a href="#">Rentue@rentue.co.kr</a>
 							</li>
 							<li>
-								<h3>Phone</h3> <span>(062) 333-6565</span>
+								<h3>Phone</h3> <span>(062) 5882-5882</span>
 							</li>
 							<li>
 								<h3>Social</h3>
@@ -270,7 +270,7 @@ li {
 	<!-- 주소 선택시 지도 뜨는 코드 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=본인앱키주소입력하기!!!!!&libraries=services"></script> -->
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a&libraries=services"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bf4d86dadf87fc45ddad1e9b45a01dd&libraries=services"></script>
 
 		<script type="text/javascript">
 			

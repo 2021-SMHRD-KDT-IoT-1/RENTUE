@@ -6,6 +6,22 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
+
+<style>
+
+li {
+	list-style: none;
+}
+
+
+#logo {
+	margin-left: 1.7em;
+	width: 290px;
+	heigh: 300px;
+}
+
+</style>
+
 <head>
 <meta charset="EUC-KR">
 <title>렌탈업체 회원 페이지입니다.</title>
@@ -16,7 +32,7 @@
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
-<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a'></script>
+<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=7bf4d86dadf87fc45ddad1e9b45a01dd'></script>
 </head>
 <body class="is-preload">
 
@@ -30,18 +46,21 @@
 
 	<!-- Sidebar -->
 	<section id="sidebar">
+	<div style="float:left;"><p style="text-align:left; "><img src="images/logo2.png" id = "logo"></p><div>
 		<div class="inner">
-			<ul class="actions small">
-				<li><a href="#" class="button small">홈으로</a></li>
-				<li><input type="button" value="my page"
+			<!-- <ul class="actions small"> -->
+				
+				<div style = "align: right; margin-bottom: 2em;">
+				<p><input type="button" value="my page"
 					onclick="window.open('mypage.jsp', '마이페이지', 'width=900px, height=1200px')"
-					class="button primary small"></li>
-				<li>
+					class="button small">
+				
 					<input type="button" value="로그아웃" onclick="location.href='LogoutServiceCon'"
 					class="button primary small">
-				</li>
+				</p>
+				</div>
 
-			</ul>
+		<!-- 	</ul> -->
 			<nav>
 				<ul>
 					<li><a href="#intro">RenTue MAP</a></li>
@@ -186,7 +205,7 @@
 					<section>
 						<ul class="contact">
 							<li>
-								<h3>Address</h3> <span>31-15 광주아트센터 3층<br /> 광주광역시, 동구
+								<h3>Address</h3> <span>31-15 광주아트센터 3층 B<br /> 광주광역시, 동구
 									예술길<br /> 대한민국
 							</span>
 							</li>
@@ -194,7 +213,7 @@
 								<h3>Email</h3> <a href="#">Rentue@rentue.co.kr</a>
 							</li>
 							<li>
-								<h3>Phone</h3> <span>(000) 000-0000</span>
+								<h3>Phone</h3> <span>(062) 5882-5882</span>
 							</li>
 							<li>
 								<h3>Social</h3>
