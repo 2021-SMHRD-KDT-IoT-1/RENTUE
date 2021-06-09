@@ -2,32 +2,27 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.DeviceDTO"%>
 <%@page import="com.model.DeviceDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 
 <style>
-
 li {
 	list-style: none;
 }
-
 
 #logo {
 	margin-left: 1.7em;
 	width: 290px;
 	heigh: 300px;
 }
-
 </style>
 
 <head>
 <meta charset="EUC-KR">
 <title>렌탈업체 회원 페이지입니다.</title>
 <meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/rent_main.css" />
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
@@ -46,31 +41,33 @@ li {
 
 	<!-- Sidebar -->
 	<section id="sidebar">
-	<div style="float:left;"><p style="text-align:left; "><img src="images/logo2.png" id = "logo"></p><div>
-		<div class="inner">
-			<!-- <ul class="actions small"> -->
-				
-				<div style = "align: right; margin-bottom: 2em;">
-				<p><input type="button" value="my page"
-					onclick="window.open('mypage.jsp', '마이페이지', 'width=900px, height=1200px')"
-					class="button small">
-				
-					<input type="button" value="로그아웃" onclick="location.href='LogoutServiceCon'"
-					class="button primary small">
-				</p>
+		<div style="float: left;">
+			<p style="text-align: left;">
+				<img src="images/logo2.png" id="logo">
+			</p>
+			<div>
+				<div class="inner">
+					<!-- <ul class="actions small"> -->
+
+					<div style="align: right; margin-bottom: 2em;">
+						<p>
+							<input type="button" value="my page" onclick="window.open('mypage.jsp', '마이페이지', 'width=900px, height=1200px')" class="button small"> <input type="button" value="로그아웃"
+								onclick="location.href='LogoutServiceCon'" class="button primary small"
+							>
+						</p>
+					</div>
+
+					<!-- 	</ul> -->
+					<nav>
+						<ul>
+							<li><a href="#intro">RenTue MAP</a></li>
+							<li><a href="#one">Manage RenTue</a></li>
+							<li><a href="#two">Contact RenTue</a></li>
+
+
+						</ul>
+					</nav>
 				</div>
-
-		<!-- 	</ul> -->
-			<nav>
-				<ul>
-					<li><a href="#intro">RenTue MAP</a></li>
-					<li><a href="#one">Manage RenTue</a></li>
-					<li><a href="#two">Contact RenTue</a></li>
-
-
-				</ul>
-			</nav>
-		</div>
 	</section>
 
 	<!-- Wrapper -->
@@ -84,28 +81,31 @@ li {
 
 		<!-- Intro -->
 		<section id="intro" class="wrapper style1 fullscreen fade-up">
-			<div class="inner">
-				<h1>Rentue-렌트업체</h1>
+			<div class="inner" style="padding: 2em !important;">
+				<h1>Rentue_렌트업체</h1>
 				<p>렌트 지도API 구현하기</p>
 			</div>
-			<div id="map" style="width: 800px; height: 600px; background-color:black; margin-left: 20px;"></div>
+			<div id="map" style="width: 1000px; height: 600px; background-color: black; margin-left: 20px;"></div>
 		</section>
 
+
+
+
+
 		<!-- One -->
-		<section id="one" class="wrapper style2 fullscreen spotlights">
-			<section>
-
-				<div class="content">
-					<div class="inner">
-						<h2>Rentue 재고관리</h2>
-					</div>
+		<section id="one" class="wrapper style2 fullscreen spotlights" style = "padding: 2em !important;">
+			
+			
+			<p>
+			<div class="content">
+				<div class="inner">
+					<h2>Rentue 재고관리</h2>
 				</div>
-			</section>
-
-
+			</div>
+			</p>
 			<label>
 				<div>
-					
+
 					<select id="targetSel" style="width: 200px; display: inline;">
 						<option value="A" name="Rent_id">핸디형</option>
 						<option value="B" name="Rent_id">튜브형</option>
@@ -116,10 +116,10 @@ li {
 
 				</div>
 			</label>
-			<section>
 
+
+			<div>
 				<div>
-					<div>
 					<select id="filter" style="width: 200px; float: left;">
 						<option value="all">전체 기기</option>
 						<option value="available">대여가능한 기기</option>
@@ -127,57 +127,54 @@ li {
 						<option value="disable">고장 기기</option>
 					</select>
 					<%-- <% if (admin.equals("Y")) { %> --%>
-						<input type="text" style="width: 200px; float: left; margin-left: 20px;"/>
-						<input type="button" id ="search_btn" style="width: 200px; margin-left: 20px; float: left;" value="아이디 검색"/><br>
+					<input type="text" style="width: 200px; float: left; margin-left: 20px;" /> <input type="button" id="search_btn" style="width: 200px; margin-left: 20px; float: left;" value="아이디 검색" /><br>
 					<%-- <% } %> --%>
-					</div>
+				</div>
 
-					<table id="kkk">
-						<!-- 첫번째 행 -->
-						<tr>
-							<td>No.</td>			
-							<td>기기번호</td>
-							<td>타입</td>
-							<td>렌탈현황</td>
-							<td>고장여부</td>
-							<td>렌탈</td>
-							<td>고장</td>
-							<td><input type='checkbox' id="del_check_all" style='margin-right:0 !important; appearance: auto !important; opacity: 100 !important;'/>삭제</td>
-							
-						
-						</tr>
-						<!-- 두번째 행부터는 내용 들어가야 함 -->
+				<table id="kkk">
+					<!-- 첫번째 행 -->
+					<tr>
+						<td>No.</td>
+						<td>기기번호</td>
+						<td>타입</td>
+						<td>렌탈현황</td>
+						<td>고장여부</td>
+						<td>렌탈</td>
+						<td>고장</td>
+						<td><input type='checkbox' id="del_check_all" style='margin-right: 0 !important; appearance: auto !important; opacity: 100 !important;' />삭제</td>
 
+					</tr>
+					<!-- 두번째 행부터는 내용 들어가야 함 -->
 
-						<%
+					<%
 						for (int i=0; i<list.size(); i++) {
 							int rowNum = i+1;
 						%>
-						<tr class='drow'>
-							<td><%=rowNum%></td>				
-							<td><%=list.get(i).getDevice_num()%></td>
-							<td><%=list.get(i).getDevice_type()%></td>
-							<td><%=list.get(i).getRent_state()%></td>
-							<td><%=list.get(i).getBroken()%></td>
-							<td><a href="Device_State_Update?device_num=<%=list.get(i).getDevice_num()%>">렌탈</a></td>
-							<td><a href="Device_broken_update?device_num=<%=list.get(i).getDevice_num()%>">고장</a></td>
-							<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td>
-						</tr>
-						<%
+					<tr class='drow'>
+						<td><%=rowNum%></td>
+						<td><%=list.get(i).getDevice_num()%></td>
+						<td><%=list.get(i).getDevice_type()%></td>
+						<td><%=list.get(i).getRent_state()%></td>
+						<td><%=list.get(i).getBroken()%></td>
+						<td><a href="Device_State_Update?device_num=<%=list.get(i).getDevice_num()%>">렌탈</a></td>
+						<td><a href="Device_broken_update?device_num=<%=list.get(i).getDevice_num()%>">고장</a></td>
+						<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;' /></td>
+					</tr>
+					<%
 						}
 						%>
-					</table>
-					
-				</div>
-
-			</section>
-
-
+				</table>
+			</div>
 		</section>
 
+
+
+
+
 		<!-- Two -->
-		<section id="two" class="wrapper style1 fade-up">
+		<section id="two" class="wrapper style1 fullscreen fade-up">
 			<div class="inner">
+			<section style="padding: 2em !important;">
 				<h2>Get in touch</h2>
 				<p>문의 사항</p>
 				<div class="split style1">
@@ -185,8 +182,7 @@ li {
 						<form method="post" action="#">
 							<div class="fields">
 								<div class="field">
-									<label for="name">로그인한 아이디를 출력하세요</label> <input type="text"
-										name="title" id="title" placeholder="글 제목을 입력해주세요" />
+									<label for="name">로그인한 아이디를 출력하세요</label> <input type="text" name="title" id="title" placeholder="글 제목을 입력해주세요" />
 								</div>
 								<!-- <div class="field half">
 												<label for="email">Email</label>
@@ -205,9 +201,9 @@ li {
 					<section>
 						<ul class="contact">
 							<li>
-								<h3>Address</h3> <span>31-15 광주아트센터 3층 B<br /> 광주광역시, 동구
-									예술길<br /> 대한민국
-							</span>
+								<h3>Address</h3> <span>
+									31-15 광주아트센터 3층 B<br /> 광주광역시, 동구 예술길<br /> 대한민국
+								</span>
 							</li>
 							<li>
 								<h3>Email</h3> <a href="#">Rentue@rentue.co.kr</a>
@@ -218,19 +214,15 @@ li {
 							<li>
 								<h3>Social</h3>
 								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span
-											class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span
-											class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span
-											class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span
-											class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-linkedin-in"><span
-											class="label">LinkedIn</span></a></li>
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 								</ul>
 							</li>
 						</ul>
+					</section>
 					</section>
 				</div>
 			</div>
@@ -250,7 +242,7 @@ li {
 	</footer>
 
 	<!-- Scripts -->
-	
+
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
