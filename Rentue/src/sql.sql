@@ -41,20 +41,19 @@ select * from device order by device_num;
 
 select * from device;
 
+drop table contact;
+
 create table contact (
 
  msg_num number(20) PRIMARY KEY,
  rent_id varchar2(20),
- msg_title varchar2(20),
- msg_text varchar2(100),
- msg_file varchar2(20)
- 
+ msg_title varchar2(100),
+ msg_text varchar2(500)
 );
+
 
 drop sequence device_num;
 drop sequence handi_num;
-create sequence device_num increment by 1 start with 1;
-create sequence handi_num increment by 1 start with 1;
 
 
 
@@ -123,7 +122,7 @@ insert into rent_member values('rent', 111, '돌머리렌트', '531-77-05796', '전남 
 
 
 select * from user_sequences;
-drop sequence device_num;
+
 
 create sequence device_num 
 	increment by 1 
@@ -134,11 +133,26 @@ create sequence device_num
 	nocache
 	;
 	
+create sequence handi_num 
+	increment by 1 
+	start with 1 
+	minvalue 1 
+	maxvalue 999999999 
+	nocycle 
+	nocache
+	;
+create sequence message_num 
+	increment by 1 
+	start with 1 
+	minvalue 1 
+	maxvalue 999999999 
+	nocycle 
+	nocache
+	;
 	
 
-
 -- A:튜브, B:핸디 라 가정
-insert into device values(device_num.nextval, 'test', 'A', 'F', 'T');
+insert into device values(handi_num.nextval, 'test', 'A', 'F', 'T');
 insert into device values(device_num.nextval, 'test', 'B', 'F', 'T');
 
 select * from device order by device_num;
@@ -146,3 +160,4 @@ select * from rent_member where ct_id='dolmeori';
 
 insert into rent_member values('admin', 111, '스마트렌트', '563-88-00950', '광주 동구 예술길 31-15', 'dolmeori');
 
+delete from device where device_num=41

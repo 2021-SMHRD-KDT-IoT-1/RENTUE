@@ -482,17 +482,15 @@ li {
 					});
 					
   function button_ps(){
-			
-			 targetSel = $('#targetSel').val();
-			
+	 
+			targetSel = $('#targetSel').val();
 
 		    $.ajax({
 		        url:'InsertServiceCon',
 		        type:'post',
 	 	        data: {
 		        	
-		        	targetSel : targetSel,
-		        
+		        	targetSel : targetSel
 		        	},
  		         
 		        success:function(){
