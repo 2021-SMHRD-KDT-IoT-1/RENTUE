@@ -31,7 +31,6 @@ public class DeleteServiceCon extends HttpServlet {
 		} else {
 			System.out.println("지우기실패!");
 		}
-		response.sendRedirect("rent_main.jsp");
 
 	}
 

@@ -43,7 +43,7 @@ public class SearchCt extends HttpServlet {
 //		
 		//System.out.println(list.toString());
 	
-		response.setContentType("application/json; charset=utf-8" );
+		response.setContentType("application/json; charset=euc-kr" );
 	
 		PrintWriter out = response.getWriter();
 		out.print(list);

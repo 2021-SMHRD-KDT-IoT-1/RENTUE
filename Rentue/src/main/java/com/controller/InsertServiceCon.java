@@ -40,12 +40,10 @@ public class InsertServiceCon extends HttpServlet {
 			if (cnt > 0) {
 
 				System.out.println("추가 성공!");
-				response.sendRedirect("rent_main.jsp");
 
 			} else {
 
 				System.out.println("추가 실패 ? ");
-				response.sendRedirect("intro_main.jsp");
 			}
 
 		}

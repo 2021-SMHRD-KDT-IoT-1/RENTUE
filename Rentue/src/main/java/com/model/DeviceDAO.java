@@ -22,7 +22,6 @@ public class DeviceDAO {
 			String db_url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String db_id = "hr";
 			String db_pw = "hr";
-
 			conn = DriverManager.getConnection(db_url, db_id, db_pw);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,16 +52,15 @@ public class DeviceDAO {
 
 		String sql = null;
 		if (targetSel.equals("A")) {
-			sql = "insert into Device(device_num, rent_id, device_type) values(handi_num.nextval, ?, ?)";
+			sql = "insert into Device(device_num, rent_id, device_type) values(handi_num.nextval, ?, 'A')";
 		} else  
-			sql = "insert into Device(device_num, rent_id, device_type) values(device_num.nextval, ?, ?)";
+			sql = "insert into Device(device_num, rent_id, device_type) values(device_num.nextval, ?, 'B')";
 
 
 		try {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, rent_id);
-			psmt.setString(2, targetSel);
 
 			cnt = psmt.executeUpdate();
 
@@ -142,6 +140,31 @@ public class DeviceDAO {
 		}
 		
 		return cnt;
+	}
+	
+	public String selectDeviceState(String device_id) {
+		String ret = "";
+		conn();
+
+		try {
+			String sql = "select rent_state from Device where device_num=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, device_id);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				ret = rs.getString(1);
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			close();
+
+		}
+
+		return ret;
 	}
 
 	public ArrayList<DeviceDTO> select(String id, String device_typet) {

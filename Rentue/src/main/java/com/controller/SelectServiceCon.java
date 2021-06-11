@@ -3,7 +3,6 @@ package com.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +27,9 @@ public class SelectServiceCon extends HttpServlet {
 			String device_type = request.getParameter("gg2");
 			DeviceDAO dao = new DeviceDAO();
 			int num = 0;
+			
+//			System.out.println(rent_id);
+//			System.out.println(device_type);
 			
 			JSONObject list = new JSONObject();
 			ArrayList<DeviceDTO> cnt = dao.select(rent_id, device_type);
