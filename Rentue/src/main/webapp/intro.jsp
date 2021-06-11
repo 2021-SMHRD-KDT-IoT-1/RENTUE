@@ -80,14 +80,9 @@ li {
 					<!-- 숨겨져 있는 로그인 영역부분 -->
 					<div style="display: none;" id="displaydiv">
 
-						<span>
-							<input type="radio" name="member2" value="Rent_member" checked>렌탈업체 <input type="radio" name="member2" value="Ct_member">관제소
-						</span>
-						<span>
-							ID<input type="text" name="id2" id="id2">
-						</span>
-						<span>
-							PW<input type="password" name="pw2" id="pw2">
+						<span> <input type="radio" name="member2" value="Rent_member" checked>렌탈업체 <input type="radio" name="member2" value="Ct_member">관제소
+						</span> <span> ID<input type="text" name="id2" id="id2">
+						</span> <span> PW<input type="password" name="pw2" id="pw2">
 						</span>
 
 						<div id="container">
@@ -178,7 +173,7 @@ li {
 		<!-- One -->
 		<section id="one" class="wrapper style2 fullscreen spotlights" style="background-image: url('images/device1.png')">
 
-			
+
 			<!-- 조인버튼 위치 수정해야함!  -->
 			<ul class="actions">
 				<li><a href="#modal" class="button scrolly">Join Us</a></li>
@@ -190,51 +185,52 @@ li {
 		<section id="two" class="wrapper style1 fullscreen fade-up">
 			<div class="inner">
 				<section style="padding: 2em !important;">
-				<h2>Get in touch</h2>
-				<p>문의 사항</p>
-				<div class="split style1">
-					<section>
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field half">
-									<label for="email">Email</label> <input type="text" name="email" id="email" />
+					<h2>Get in touch</h2>
+					<p>문의 사항</p>
+					<div class="split style1">
+						<section>
+						
+								<div class="fields">
+									<div class="field half">
+										<label for="email">Email</label> <input type="text" name="email" id="email" />
+									</div>
+									<div class="field half">
+										<label for="title">Title</label> <input type="text" name="title" id="title" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="5"></textarea>
+									</div>
 								</div>
-								<div class="field half">
-									<label for="title">Title</label> <input type="text" name="title" id="title" />
-								</div>
-								<div class="field">
-									<label for="message">Message</label>
-									<textarea name="message" id="message" rows="5"></textarea>
-								</div>
-							</div>
-							<ul class="actions">
-								<li><a href="javascript:void(0);" onclick="send_message();" class="button submit">Send Message</a></li>
-							</ul>
-						</form>
-					</section>
-					<section>
-						<ul class="contact">
-							<li>
-								<h3>Address</h3> <span>
-									31-15 광주아트센터 3층 B<br /> 광주광역시, 동구 예술길<br /> 대한민국
-								</span>
-							</li>
-							<li>
-								<h3>Email</h3> <a href="#">Rentue@rentue.co.kr</a>
-							</li>
-							<li>
-								<h3>Phone</h3> <span>(062) 5882-5882</span>
-							</li>
-							<li>
-								<h3>Social</h3>
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+								<br>
+								<ul class="actions">
+									
+									<li><button onclick="send_message();">Send Message</button></li>
 								</ul>
-							</li>
+							
+						</section>
+						<section>
+							<ul class="contact">
+								<li>
+									<h3>Address</h3> <span> 31-15 광주아트센터 3층 B<br /> 광주광역시, 동구 예술길<br /> 대한민국
+								</span>
+								</li>
+								<li>
+									<h3>Email</h3> <a href="#">Rentue@rentue.co.kr</a>
+								</li>
+								<li>
+									<h3>Phone</h3> <span>(062) 5882-5882</span>
+								</li>
+								<li>
+									<h3>Social</h3>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</li>
 							</ul>
 						</section>
 				</section>
@@ -290,7 +286,7 @@ $(document).ready(function() {
 		$('.error').show().text(e);
 	}
 });
-		</script>
+	</script>
 
 
 	<script>
@@ -306,7 +302,7 @@ $(document).ready(function() {
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 			mapOption = {
 			center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-			level : 5
+			level : 1
 			// 지도의 확대 레벨
 			};
 			
@@ -349,19 +345,19 @@ $(document).ready(function() {
 					});
 				}
 			}).open();
-			}
+		}
 			
 			
 			//회원가입 버튼
-			function button_join(){
+		function button_join(){
 			 
-				 member = $("input:radio[name='member']:checked").val(),
-			 id = $('#id').val();
-			 pw = $('#pw').val();
-			 rent_name = $('#rent_name').val();
-			 rent_num = $('#rent_num').val();
-			 locations = $('#sample5_address').val();
-			 targetSel = $('#targetSel').val();
+			member = $("input:radio[name='member']:checked").val();
+			id = $('#id').val();
+			pw = $('#pw').val();
+			rent_name = $('#rent_name').val();
+			rent_num = $('#rent_num').val();
+			locations = $('#sample5_address').val();
+			targetSel = $('#targetSel').val();
 			
 			
 			$.ajax({
@@ -384,7 +380,7 @@ $(document).ready(function() {
 			        location.replace(url);
 			    },
 			    error:function(){
-			        alert("에러 발생~~ \n");
+			        alert("에러가 발생하였습니다.");
 				}
 			});
 			}
@@ -430,7 +426,7 @@ $(document).ready(function() {
 				} 
 				},
 			 error:function(){
-		            alert("에러 발생~~ \n");
+		            alert("에러가 발생하였습니다.");
 		   	}
 		});
 		});
@@ -494,52 +490,32 @@ $(document).ready(function() {
 		            	location.replace(url);
 			        },
 			        error:function(){
-			           alert("에러 발생~~ \n");
+			           alert("에러가 발생하였습니다.");
 			           location.reload(true);
 			    	}
 			    });	
 
-				 }
-				 
-				 	function send_message(){
-				$.ajax({
-					url:'MessageServiceCon',
-					data:{
-						email : $('#email').val(),
-						title : $('#title').val(),
-						message : $('#message').val()
-					},
-					success:function(){
-						console.log(email);
-						alert("메시지가 전송되었습니다.");
-						location.reload();
-					},
-					error:function(){
-						alert("메시지 전송에 실패하였습니다.");
-						location.reload();
-					}
-				});
-
 			}
-			
+				 
 			function send_message(){
 				$.ajax({
 					url:'MessageServiceCon',
+					type:'post',
 					data:{
 						email : $('#email').val(),
 						title : $('#title').val(),
 						message : $('#message').val()
 					},
 					success:function(){
-						console.log(email);
+						console.log("메시지가 전송되었습니다.");
+						
 						alert("메시지가 전송되었습니다.");
-						location.reload();
 					},
 					error:function(){
 						alert("메시지 전송에 실패하였습니다.");
-						location.reload();
 					}
 				});
+				
 			}
 			
 

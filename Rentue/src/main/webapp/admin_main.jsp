@@ -19,6 +19,16 @@
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
+<style>
+li {
+	list-style: none;
+}
+#logo {
+	margin-left: 1.7em;
+	width: 290px;
+	heigh: 300px;
+}
+</style>
 </head>
 <body class="is-preload">
 	<%
@@ -38,23 +48,26 @@
 
 	<!-- Sidebar -->
 	<section id="sidebar">
-		<div class="inner">
-			<ul class="actions small">
-				<li><a href="#" class="button small">홈으로</a></li>
-				<li><input type="button" value="my page" onclick="window.open('mypage.jsp', '마이페이지', 'width=900px, height=1200px')" class="button primary small">
-				</li>
-				<li><input type="button" value="로그아웃" onclick="location.href='LogoutServiceCon'" class="button primary small"></li>
-
-			</ul>
-			<nav>
-				<ul>
-					<li><a href="#rent">rental office</a></li>
-					<li><a href="#ct">control station</a></li>
-					<li><a href="#device">device</a></li>
-					<li><a href="#message">message</a></li>
-				</ul>
-			</nav>
-		</div>
+		<div style="float: left;">
+			<p style="text-align: left;">
+				<img src="images/logo2.png" id="logo">
+			</p>
+			<div>
+				<div class="inner">
+					<div style="align: right; margin-bottom: 2em;">
+						<p>
+							<input type="button" value="로그아웃" onclick="location.href='LogoutServiceCon'" class="button primary small">
+						</p>
+					</div>
+					<nav>
+						<ul>
+							<li><a href="#rent">rental office</a></li>
+							<li><a href="#ct">control station</a></li>
+							<li><a href="#device">device</a></li>
+							<li><a href="#message">message</a></li>
+						</ul>
+					</nav>
+				</div>
 	</section>
 
 
@@ -272,6 +285,7 @@
 							<%
 							for (int i = 0; i < device_list.size(); i++) {
 								int rowNum = i + 1;
+								System.out.println(device_list.get(i).getDevice_num());
 							%>
 							<tr class='drow'>
 								<td><%=rowNum%></td>
@@ -285,7 +299,7 @@
 									}
 									%>
 								</td>
-								<td><%=device_list.get(i).getRent_id() %></td>
+								<td><%=device_list.get(i).getRent_id()%></td>
 								<td>
 									<%
 									if (device_list.get(i).getRent_state().equals("F")) {
@@ -388,7 +402,6 @@
 								} else {
 									val += "<td>고장</td>";
 								}
-								val += "<td>" + v.broken+"</td>";
 								val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
 								val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
 								val += "<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td></tr>";
@@ -401,7 +414,7 @@
 				        	console.log(a);
 				        	console.log(b);
 				        	console.log(c);
-				            alert("에러 발생~~ \n");
+				            alert("에러가 발생하였습니다.");
 				    	}
 				});
 				 location.reload();
@@ -495,7 +508,7 @@
 				        	console.log(a);
 				        	console.log(b);
 				        	console.log(c);
-				            alert("에러 발생~~ \n");
+				            alert("에러가 발생하였습니다.");
 				    	}
 					});
 				

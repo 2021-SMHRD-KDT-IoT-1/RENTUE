@@ -20,13 +20,11 @@ li {
 }
 
 #logo_small {
-	
 	float: left;
 	width: 5.25em;
 	heigh: 3em;
 }
 </style>
-/*테스트*/
 <head>
 <meta charset="EUC-KR">
 <title>렌탈업체 회원 페이지입니다.</title>
@@ -36,7 +34,7 @@ li {
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
-<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=7bf4d86dadf87fc45ddad1e9b45a01dd'></script>
+<script type='text/javascript'></script>
 </head>
 <body class="is-preload">
 
@@ -59,7 +57,6 @@ li {
 	}
 	DeviceDAO dao = new DeviceDAO();
 	ArrayList<DeviceDTO> list = dao.select(dto.getRent_id(), null);
-	/* String admin = dto.getAdmin(); */
 	%>
 
 
@@ -112,13 +109,13 @@ li {
 			<!-- 회원정보 수정 모달창 -->
 			<div id="modal" class="modal-overlay" style="position: absolute;">
 				<div class="modal-window">
-						<div class="close-area" style="float: right;">X</div>
+					<div class="close-area" style="float: right;">X</div>
 					<div class="title">
-						<img src = "images/logo_small.png" id="logo_small">
+						<img src="images/logo_small.png" id="logo_small">
 						<div style="float: left; margin-right: 12.5em; margin-left: 2em; margin-top: 0.5em;">
-						
-						<h3>회원정보 수정</h3>
-						
+
+							<h3>회원정보 수정</h3>
+
 						</div>
 					</div>
 					<div class="content">
@@ -126,24 +123,24 @@ li {
 						<div>
 							<li>ID&nbsp;&nbsp;&nbsp;<%=dto.getRent_id()%></li>
 							<li>PW<input style="height: 2em; width: 12em;" class="field half" type="password" placeholder="변경할 PW를 입력하세요" id="pw"></li>
-							<li style="float: left; margin-right: 0.75em;">업체명<input type="text" id="rent_name" value="<%=dto.getRent_name()%>" style="height: 2em; width: 12em;"></li>
-							<li id="r_num">사업자번호<input type="text" id="rent_num" value="<%=dto.getRent_num()%>" style = "height: 2em; width: 12em;"></li>
-							<li>주소<input type="text" id="sample5_address" value="<%=dto.getRent_addr()%>" style="height: 2.25em;">
-							<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" style="height: 3.75em; line-height: 2.75em; margin-top: 0.75em;"></li>
-							<li id="select">
-							<select id="targetSel" style="height: 2.25em;">
+							<li style="float: left; margin-right: 0.75em;">업체명<input type="text" id="rent_name" value="<%=dto.getRent_name()%>"
+								style="height: 2em; width: 12em;"></li>
+							<li id="r_num">사업자번호<input type="text" id="rent_num" value="<%=dto.getRent_num()%>" style="height: 2em; width: 12em;"></li>
+							<li>주소<input type="text" id="sample5_address" value="<%=dto.getRent_addr()%>" style="height: 2.25em;"> <input type="button"
+								onclick="sample5_execDaumPostcode()" value="주소 검색" style="height: 3.75em; line-height: 2.75em; margin-top: 0.75em;"></li>
+							<li id="select"><select id="targetSel" style="height: 2.25em;">
 									<option value="<%=dto.getCt_id()%>"><%=ct_name%></option>
-						
+
 							</select>
 								<button id="search" style="height: 3.75em; line-height: 2.75em; margin-top: 0.75em;">가까운 관제소 찾기</button></li>
-							<li><button id="submit" type="button" onclick="button_update()"style="height: 3.75em; line-height: 2.75em; margin-top: 9em;">UPDATE</button></li>
+							<li><button id="submit" type="button" onclick="button_update()" style="height: 3.75em; line-height: 2.75em; margin-top: 3em;">UPDATE</button></li>
 
 
-							<div id="map" style="width: 170px; height: 170px; margin-top: -100px; float: right; display: none"></div>
+							<div id="map_update" style="width: 170px; height: 170px; margin-top: -100px; float: right;"></div>
+							<!-- 안보이게 하려면 display: none; 추가 -->
 						</div>
-						</div>
-						</p>
-						
+					</div>
+					</p>
 		</section>
 
 
@@ -163,70 +160,95 @@ li {
 			</p>
 			<label>
 				<div>
-				
+					<input type="text" id="search_device" placeholder="검색어를 입력하세요" style="width: 400px; float: left;" /> <br> <br>
+				</div>
+				<div>
+
 					<select id="filter" style="width: 250px; float: left; margin-right: 20px; display: inline;">
 						<option value="all">전체 기기</option>
 						<option value="available">대여가능한 기기</option>
 						<option value="not-available">대여중인 기기</option>
 						<option value="disable">고장 기기</option>
-					</select>
-
-					
-					<select id="targetSel" style="width: 200px; display: inline;">
+					</select> <select id="Sel" style="width: 200px; display: inline;">
 						<option value="A" name="Rent_id">핸디형</option>
 						<option value="B" name="Rent_id">튜브형</option>
 					</select>
-					
+
 					<button id="submit" type="button" onclick="button_ps()" style="margin: 0px;">추가등록</button>
 					<input type="button" id="chk_delbtn" value="체크항목 삭제" />
-
 
 				</div>
 			</label>
 
 
 			<div>
-				<div>
-					<%-- <% if (admin.equals("Y")) { %> --%>
-					<input type="text" style="width: 200px; float: left; margin-left: 20px;" /> <input type="button" id="search_btn" style="width: 200px; margin-left: 20px; float: left;" value="아이디 검색" /><br>
-					<%-- <% } %> --%>
-					<br>
+
+				<div id="device_div" style="width: 100%; height: 30em; overflow: auto">
+					<div id="device_div" style="width: 100%; height: 30em; overflow: auto">
+						<table id="kkk">
+							<thead>
+								<!-- 첫번째 행 -->
+								<tr>
+									<td>No.</td>
+									<td>기기번호</td>
+									<td>타입</td>
+									<td>렌탈현황</td>
+									<td>고장여부</td>
+									<td>렌탈</td>
+									<td>고장</td>
+									<td><input type='checkbox' id="del_check_all" style='margin-right: 0 !important; appearance: auto !important; opacity: 100 !important;' />삭제</td>
+
+								</tr>
+							</thead>
+							<tbody>
+
+								<!-- 두번째 행부터는 내용 들어가야 함 -->
+
+								<%
+								for (int i = 0; i < list.size(); i++) {
+									int rowNum = i + 1;
+								%>
+								<tr class='drow'>
+									<td><%=rowNum%></td>
+									<td><%=list.get(i).getDevice_num()%></td>
+									<td>
+										<%
+										if (list.get(i).getDevice_type().equals("B")) {
+										%> 튜브형 <%
+										} else {
+										%> 핸디형 <%
+										}
+										%>
+									</td>
+									<td>
+										<%
+										if (list.get(i).getRent_state().equals("F")) {
+										%> 대기 <%
+										} else {
+										%> 대여중 <%
+										}
+										%>
+									</td>
+									<td>
+										<%
+										if (list.get(i).getBroken().equals("F")) {
+										%> 정상 <%
+										} else {
+										%> 고장 <%
+										}
+										%>
+									</td>
+									<td><a href="Device_State_Update?device_num=<%=list.get(i).getDevice_num()%>">렌탈</a></td>
+									<td><a href="Device_broken_update?device_num=<%=list.get(i).getDevice_num()%>">고장</a></td>
+									<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;' /></td>
+								</tr>
+								<%
+								}
+								%>
+							</tbody>
+						</table>
+					</div>
 				</div>
-
-				<table id="kkk">
-					<!-- 첫번째 행 -->
-					<tr>
-						<td>No.</td>
-						<td>기기번호</td>
-						<td>타입</td>
-						<td>렌탈현황</td>
-						<td>고장여부</td>
-						<td>렌탈</td>
-						<td>고장</td>
-						<td><input type='checkbox' id="del_check_all" style='margin-right: 0 !important; appearance: auto !important; opacity: 100 !important;' />삭제</td>
-
-					</tr>
-					<!-- 두번째 행부터는 내용 들어가야 함 -->
-
-					<%
-					for (int i = 0; i < list.size(); i++) {
-						int rowNum = i + 1;
-					%>
-					<tr class='drow'>
-						<td><%=rowNum%></td>
-						<td><%=list.get(i).getDevice_num()%></td>
-						<td><%=list.get(i).getDevice_type()%></td>
-						<td><%=list.get(i).getRent_state()%></td>
-						<td><%=list.get(i).getBroken()%></td>
-						<td><a href="Device_State_Update?device_num=<%=list.get(i).getDevice_num()%>">렌탈</a></td>
-						<td><a href="Device_broken_update?device_num=<%=list.get(i).getDevice_num()%>">고장</a></td>
-						<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;' /></td>
-					</tr>
-					<%
-					}
-					%>
-				</table>
-			</div>
 		</section>
 
 
@@ -241,31 +263,29 @@ li {
 					<p>문의 사항</p>
 					<div class="split style1">
 						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">로그인한 아이디를 출력하세요</label> <input type="text" name="title" id="title" placeholder="글 제목을 입력해주세요" />
-									</div>
-									<!-- <div class="field half">
+							<div class="fields">
+								<div class="field">
+									<label for="name"><%=dto.getRent_id()%></label> <input type="text" name="title" id="title" placeholder="글 제목을 입력해주세요" />
+								</div>
+								<!-- <div class="field half">
 												<label for="email">Email</label>
 												<input type="text" name="email" id="email" />
 											</div> -->
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="5"></textarea>
-									</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="5"></textarea>
 								</div>
-								<ul class="actions">
-									<li><a href="" class="button submit">Send Message</a></li>
-								</ul>
-							</form>
+							</div>
+							<br>
+							<ul class="actions">
+								<li><button onclick="send_message();">Send Message</button></li>
+							</ul>
 						</section>
 						<section>
 							<ul class="contact">
 								<li>
-									<h3>Address</h3> <span>
-										31-15 광주아트센터 3층 B<br /> 광주광역시, 동구 예술길<br /> 대한민국
-									</span>
+									<h3>Address</h3> <span> 31-15 광주아트센터 3층 B<br /> 광주광역시, 동구 예술길<br /> 대한민국
+								</span>
 								</li>
 								<li>
 									<h3>Email</h3> <a href="#">Rentue@rentue.co.kr</a>
@@ -312,176 +332,202 @@ li {
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-	
+
 	<!-- 주소 선택시 지도 뜨는 코드 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=본인앱키주소입력하기!!!!!&libraries=services"></script> -->
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bf4d86dadf87fc45ddad1e9b45a01dd&libraries=services"></script>
-	
-	
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a&libraries=services"></script>
+
+
 	<script type="text/javascript">
-					$(document).ready(function() {
-						$("#del_check_all").on("click", function() {
-							$(document).find(".del_check").each(function (i, v) {
-								if ($(this).parent().parent().css("display") != "none") {
-									if ($("#del_check_all").is(":checked")) {
-										$(this).prop("checked", true);
-									} else {
-										$(this).prop("checked", false);
-									}
-								}
-							});
-						});
+	$(document).ready(function() {
+		var timer = setInterval(tt, 100);
+		
+		$("#del_check_all").on("click", function() {
+			$(document).find(".del_check").each(function (i, v) {
+				if ($(this).parent().parent().css("display") != "none") {
+					if ($("#del_check_all").is(":checked")) {
+						$(this).prop("checked", true);
+					} else {
+						$(this).prop("checked", false);
+					}
+				}
+			});
+		});
 						
-						$("#chk_delbtn").on("click", function() {
-							var del = new Array();
-							$(document).find(".del_check").each(function (i, v) {
-								if ($(this).parent().parent().css("display") != "none") {
-									if ($(this).is(":checked")) {
-										del.push($(this).parent().parent().find("td").eq(1).text());
-									}
-								}
-							});
-							console.log(del);
-							$.each(del, function(i, v) {
-								 $.ajax({
-									 	data: {
-									        'device_num' : v
-								        },
-								        url:'DeleteServiceCon',
-								        success: function() {
-											alert("삭제 성공~~ \n");							        	
-								        },
-								        error:function(a, b, c){
-								        	console.log(a);
-								        	console.log(b);
-								        	console.log(c);
-								            alert("에러 발생~~ \n");
-								    	}
-									});
-							});
-							 $.ajax({
-								 	data: {
-								        'gg' : '<%=dto.getRent_id()%>',
-								        'gg2' : $("#targetSel").val()
-							        },
-							        url:'SelectServiceCon',
-							        contentType : "application/json; charset:euc-kr",
-									dataType: "JSON",
-							        success: function(jsonList){
-							        	console.log(jsonList);
-							        	$.each(jsonList, function(i, v) {
-							        		var rowNum = i*1+1;
-											var val = "<tr class='drow'><td>" + rowNum + "</td>";
-											val += "<td>" + v.device_num + "</td>";
-											val += "<td>" + v.device_type+"</td>";
-											val += "<td>" + v.rent_state+"</td>";
-											val += "<td>" + v.broken+"</td>";
-											val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
-											val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
-											val += "<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td></tr>";
-											$("#kkk").append(val);
-							        	});
-							        	// console.log(data);
-							        	/* <a href='DeleteServiceCon?device_num=" + v.device_num + "'>삭제</a> */
-							        },
-							        error:function(a, b, c){
-							        	console.log(a);
-							        	console.log(b);
-							        	console.log(c);
-							            alert("에러 발생~~ \n");
-							    	}
-							});
-							 location.reload();
-						});
-						
-						
-						$("#filter").on("change", function() {
-							var ind = 1;
-							var filterType = $("#filter").val();
-							$("#kkk").find(".drow").each(function(i, v) {
-								switch (filterType) {
-									case "all":
-										$(this).css("display", "table-row");
-										break;
-									case "available":
-										if ($(this).find("td").eq(3).text() == 'F') {
-											$(this).css("display", "table-row");
-										} else {
-											$(this).css("display", "none");
-										}
-										break;
-									case "not-available":
-										if ($(this).find("td").eq(3).text() == 'T') {
-											$(this).css("display", "table-row");
-										} else {
-											$(this).css("display", "none");
-										}
-										break;
-									case "disable":
-										if ($(this).find("td").eq(4).text() == 'T') {
-											$(this).css("display", "table-row");
-										} else {
-											$(this).css("display", "none");
-										}
-										break;
-								}
-								var disp = $(this).css("display");
-								if (disp != "none") {
-									$(this).find("td").eq(0).text(ind++);
-								}
-							});
-						});
-						
-						
-						$("#targetSel").on("change", function() {
-							<%-- <%
-							DeviceDTO dto2 = new DeviceDTO();
-							String type ="";
-							list = dao.select(dto.getRent_id(), dto.);
-							%> --%>
-							  $.ajax({
-								 	data: {
-								        'gg' : '<%=dto.getRent_id()%>',
-								        'gg2' : $("#targetSel").val()
-							        },
-							        url:'SelectServiceCon',
-							        contentType : "application/json; charset:euc-kr",
-									dataType: "JSON",
-							        success: function(jsonList){
-							        	console.log(jsonList);
-							        	$.each(jsonList, function(i, v) {
-							        		var rowNum = i*1+1;
-											var val = "<tr class='drow'><td>" + rowNum + "</td>";
-											val += "<td>" + v.device_num + "</td>";
-											val += "<td>" + v.device_type+"</td>";
-											val += "<td>" + v.rent_state+"</td>";
-											val += "<td>" + v.broken+"</td>";
-											val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
-											val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
-											val += "<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td></tr>";
-											$("#kkk").append(val);
-							        	});
-							        	// console.log(data);
-							        	/* <a href='DeleteServiceCon?device_num=" + v.device_num + "'>삭제</a> */
-							        },
-							        error:function(a, b, c){
-							        	console.log(a);
-							        	console.log(b);
-							        	console.log(c);
-							            alert("에러 발생~~ \n");
-							    	}
-								});
-							
-							$("#kkk").find("tr").each(function(i, v) {
-								if (i > 0) {
-									$(this).remove();
-								}
-							});
-						}).trigger("change");
+		$("#chk_delbtn").on("click", function() {
+			var del = new Array();
+			$(document).find(".del_check").each(function (i, v) {
+				if ($(this).parent().parent().css("display") != "none") {
+					if ($(this).is(":checked")) {
+						del.push($(this).parent().parent().find("td").eq(1).text());
+					}
+				}
+			});
+			console.log(del);
+			$.each(del, function(i, v) {
+				 $.ajax({
+					 	data: {
+					        'device_num' : v
+				        },
+				        url:'DeleteServiceCon',
+				        success: function() {
+							alert("기기가 삭제되었습니다.");							        	
+				        },
+				        error:function(a, b, c){
+				        	console.log(a);
+				        	console.log(b);
+				        	console.log(c);
+				            alert("에러가 발생하였습니다.");
+				    	}
 					});
+			});
+			$.ajax({
+			 	data: {
+			        'gg' : '<%=dto.getRent_id()%>',
+			        'gg2' : $("#Sel").val()
+		        },
+		        url:'SelectServiceCon',
+		        contentType : "application/json; charset:euc-kr",
+				dataType: "JSON",
+		        success: function(jsonList){
+		        	console.log(jsonList);
+		        	$.each(jsonList, function(i, v) {
+		        		var rowNum = i*1+1;
+						var val = "<tr class='drow'><td>" + rowNum + "</td>";
+						val += "<td>" + v.device_num + "</td>";
+						if(v.device_type == "B"){
+							val += "<td>튜브형</td>";
+						}else{
+							val += "<td>핸디형</td>";
+						}
+						if (v.rent_state == "F") {
+							val += "<td>대기</td>";
+						} else {
+							val += "<td>대여중</td>";
+						}
+						if (v.broken == "F") {
+							val += "<td>정상</td>";
+						} else {
+							val += "<td>고장</td>";
+						}
+						val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
+						val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
+						val += "<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td></tr>";
+						$("#kkk").append(val);
+		        	});
+	        		// console.log(data);
+		        	/* <a href='DeleteServiceCon?device_num=" + v.device_num + "'>삭제</a> */
+				},
+					error:function(a, b, c){
+					   	console.log(a);
+					   	console.log(b);
+					   	console.log(c);
+					    alert("에러가 발생하였습니다.");
+					}
+				});
+			 	location.reload();
+			});
 					
-  function button_ps(){
+						
+			$("#filter").on("change", function() {
+				var ind = 1;
+				var filterType = $("#filter").val();
+				$("#kkk").find(".drow").each(function(i, v) {
+					switch (filterType) {
+						case "all":
+							$(this).css("display", "table-row");
+							break;
+						case "available":
+							if ($(this).find("td").eq(3).text() == "대기") {
+								$(this).css("display", "table-row");
+							} else {
+								$(this).css("display", "none");
+							}
+							break;
+						case "not-available":
+							if ($(this).find("td").eq(3).text() == "대여중") {
+								$(this).css("display", "table-row");
+							} else {
+								$(this).css("display", "none");
+							}
+							break;
+						case "disable":
+							if ($(this).find("td").eq(4).text() == "고장") {
+								$(this).css("display", "table-row");
+							} else {
+								$(this).css("display", "none");
+							}
+							break;
+					}
+					var disp = $(this).css("display");
+					if (disp != "none") {
+						$(this).find("td").eq(0).text(ind++);
+					}
+				});
+			});
+				
+						
+			$("#Sel").on("change", function() {
+				<%-- <%
+				DeviceDTO dto2 = new DeviceDTO();
+				String type ="";
+				list = dao.select(dto.getRent_id(), dto.);
+				%> --%>
+				  $.ajax({
+					 	data: {
+					        'gg' : '<%=dto.getRent_id()%>',
+					        'gg2' : $("#Sel").val()
+				        },
+				        url:'SelectServiceCon',
+				        contentType : "application/json; charset:euc-kr",
+						dataType: "JSON",
+				        success: function(jsonList){
+				        	console.log(jsonList);
+				        	$.each(jsonList, function(i, v) {
+				        		var rowNum = i*1+1;
+								var val = "<tr class='drow'><td>" + rowNum + "</td>";
+								val += "<td>" + v.device_num + "</td>";
+								if(v.device_type == "B"){
+									val += "<td>튜브형</td>";
+								}else{
+									val += "<td>핸디형</td>";
+								}
+								if (v.rent_state == "F") {
+									val += "<td>대기</td>";
+								} else {
+									val += "<td>대여중</td>";
+								}
+								if (v.broken == "F") {
+									val += "<td>정상</td>";
+								} else {
+									val += "<td>고장</td>";
+								}
+								val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
+								val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
+								val += "<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td></tr>";
+								$("#kkk").append(val);
+				        	});
+				        	// console.log(data);
+				        	/* <a href='DeleteServiceCon?device_num=" + v.device_num + "'>삭제</a> */
+				        },
+				        error:function(a, b, c){
+				        	console.log(a);
+				        	console.log(b);
+				        	console.log(c);
+				            alert("에러가 발생하였습니다.");
+				    	}
+					});
+							
+					$("#kkk").find("tr").each(function(i, v) {
+						if (i > 0) {
+							$(this).remove();
+						}
+					});
+				}).trigger("change");
+			});
+					
+  		function button_ps(){
 	 
 			targetSel = $('#targetSel').val();
 
@@ -498,38 +544,38 @@ li {
 		            location.reload();
 		        },
 		        error:function(){
-		            alert("에러 발생~~ \n");
+		            alert("에러가 발생하였습니다.");
 		    	}
 			});
 		
 		
 		}
-   var lat = 36.81415176;
-   var lng = 127.11072775;
+   var lat_1 = 36.81415176;
+   var lng_1 = 127.11072775;
    var lat2 = 36.81415176;
    var lng2 = 127.11072775;
-   var container = document.getElementById("map");
-   var options = {
-      center: new kakao.maps.LatLng(lat, lng),
+   var container_1 = document.getElementById("map");
+   var options_1 = {
+      center: new kakao.maps.LatLng(lat_1, lng_1),
       level : 1
    };
-   var _kakaoMap = new kakao.maps.Map(container, options);
+   var _kakaoMap = new kakao.maps.Map(container_1, options_1);
    
    //var mapTypeControl = new kakao.maps.MapTypeControl();
   // _kakaoMap.addControl(mapTypeControl, kakao.maps.ControlPosition.RIGHTTOP);
   
-  var marker = null;
+  var marker_1 = null;
   var marker2 = null;
 function tt() {
 	try {
-	  marker.setMap(null);
+	  marker_1.setMap(null);
 	} finally {
-		lat = lat - 0.000012;
-		lng = lng - 0.000012;
-	    var coord = new kakao.maps.LatLng(lat, lng);
+		lat_1 = lat_1 - 0.000012;
+		lng_1 = lng_1 - 0.000012;
+	    var coord_1 = new kakao.maps.LatLng(lat_1, lng_1);
 		//_kakaoMap.setCenter(coord);
-	    marker = new kakao.maps.Marker({position:coord});
-		marker.setMap(_kakaoMap);
+	    marker_1 = new kakao.maps.Marker({position:coord_1});
+		marker_1.setMap(_kakaoMap);
 		
 		try {
 		  	marker2.setMap(null);
@@ -543,10 +589,7 @@ function tt() {
 	}
 }
   
-  $(document).ready(function() {
-	  var timer = setInterval(tt, 100);
-  });
-  
+
   
 //모달창-- 회원가입창
 	//특정 버튼을 눌렀을 때 창 띄우기   
@@ -578,10 +621,10 @@ function tt() {
 			let addr_save;
 			
 			
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+			var mapContainer = document.getElementById('map_update'), // 지도를 표시할 div
 			mapOption = {
-			center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-			level : 5
+			center : new daum.maps.LatLng(35.1498791, 126.919844), // 지도의 중심좌표
+			level : 1
 			// 지도의 확대 레벨
 			};
 			
@@ -591,7 +634,7 @@ function tt() {
 			var geocoder = new daum.maps.services.Geocoder();
 			//마커를 미리 생성
 			var marker = new daum.maps.Marker({
-			position : new daum.maps.LatLng(37.537187, 127.005476),
+			position : new daum.maps.LatLng(35.1498791, 126.919844),
 			map : map
 			});
 			
@@ -624,6 +667,107 @@ function tt() {
 					});
 				}
 			}).open();
+		}
+			
+		
+			function button_update() {
+				$.ajax({
+					url : 'RentUpdateServiceCon',
+					type : 'post',
+					data : {
+						'id' : '<%=dto.getRent_id()%>',
+						'pw' : $('#pw').val(),
+						'rent_name' : $('#rent_name').val(),
+						'rent_num' : $('#rent_num').val(),
+						'locations' : $('#sample5_address').val(),
+						'targetSel' : $('#targetSel').val()
+					},
+
+					success : function() {
+						console.log("완료!");
+						alert("수정이 완료되었습니다.");
+						let url = 'rent_main.jsp';
+						location.replace(url);
+					},
+					error : function() {
+						alert("수정에 실패하였습니다.");
+					}
+				});
+			}
+			
+			
+			$("#search").on('click', function() {
+				$.ajax({
+					data : {
+						'x' : result.x,
+						'y' : result.y
+					},
+					contentType : "application/json; charset : euc-kr",
+					dataType : "JSON",
+					url : 'SearchCt',
+					success : function(jsonList) {
+						console.log(jsonList);
+
+						$('#targetSel').children("option").remove();
+						for ( var key in jsonList) {
+							for ( var val in jsonList[key]) {
+								var option = "<option value='" + val + "'>"	+ jsonList[key][val] + "</option>";
+								console.log(option);
+								$('#targetSel').append(option);
+							}
+						}
+					},
+					error : function() {
+						alert("에러가 발생하였습니다.");
+					}
+				});
+			});
+			
+			// Search all columns
+			$('#search_device')
+					.keyup(
+							function() {
+								// Search Text
+								var search = $(this).val();
+
+								// Hide all table tbody rows
+								$('#kkk tbody tr').hide();
+
+								// Count total search result
+								var len = $('#kkk tbody tr:not(.notfound) td:contains("'
+										+ search + '")').length;
+
+								if (len > 0) {
+									// Searching text in columns and show match row
+									$(
+											'#kkk tbody tr:not(.notfound) td:contains("'
+													+ search + '")').each(
+											function() {
+												$(this).closest('tr').show();
+											});
+								}
+							});
+
+			function send_message(){
+				var send_id = '<%=dto.getRent_id() %>';
+				console.log(send_id);
+				console.log($('#title').val());
+				console.log($('#message').val());
+				$.ajax({
+					url:'MessageServiceCon',
+					type:'post',
+					data:{
+						email : send_id,
+						title : $('#title').val(),
+						message : $('#message').val()
+					},
+					success:function(data){
+						alert("메시지가 전송되었습니다.");
+					},
+					error:function(){
+						alert("메시지 전송에 실패하였습니다.");
+					}
+				});
 			}
   
 </script>

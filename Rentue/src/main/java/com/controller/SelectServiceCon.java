@@ -29,8 +29,8 @@ public class SelectServiceCon extends HttpServlet {
 			DeviceDAO dao = new DeviceDAO();
 			int num = 0;
 			
-			System.out.println(rent_id);
-			System.out.println(device_type);
+//			System.out.println(rent_id);
+//			System.out.println(device_type);
 			
 			JSONObject list = new JSONObject();
 			ArrayList<DeviceDTO> cnt = dao.select(rent_id, device_type);
