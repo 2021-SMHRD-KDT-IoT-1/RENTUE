@@ -197,10 +197,10 @@ li {
 							<form method="post" action="#">
 								<div class="fields">
 									<div class="field half">
-										<label for="name">Name</label> <input type="text" name="name" id="name" />
+										<label for="email">Email</label> <input type="text" name="email" id="email" />
 									</div>
 									<div class="field half">
-										<label for="email">Email</label> <input type="text" name="email" id="email" />
+										<label for="title">Title</label> <input type="text" name="title" id="title" />
 									</div>
 									<div class="field">
 										<label for="message">Message</label>
@@ -208,7 +208,7 @@ li {
 									</div>
 								</div>
 								<ul class="actions">
-									<li><a href="" class="button submit">Send Message</a></li>
+									<li><a href="javascript:void(0);" onclick="send_message();" class="button submit">Send Message</a></li>						
 								</ul>
 							</form>
 						</section>
@@ -499,6 +499,26 @@ $(document).ready(function() {
 			    	}
 			    });	
 				 }
+				 
+				 	function send_message(){
+				$.ajax({
+					url:'MessageServiceCon',
+					data:{
+						email : $('#email').val(),
+						title : $('#title').val(),
+						message : $('#message').val()
+					},
+					success:function(){
+						console.log(email);
+						alert("메시지가 전송되었습니다.");
+						location.reload();
+					},
+					error:function(){
+						alert("메시지 전송에 실패하였습니다.");
+						location.reload();
+					}
+				});
+			}
 			
 						
 			

@@ -26,7 +26,7 @@ li {
 	heigh: 3em;
 }
 </style>
-
+/*테스트*/
 <head>
 <meta charset="EUC-KR">
 <title>렌탈업체 회원 페이지입니다.</title>
