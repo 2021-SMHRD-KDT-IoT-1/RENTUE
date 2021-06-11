@@ -190,51 +190,51 @@ li {
 		<section id="two" class="wrapper style1 fullscreen fade-up">
 			<div class="inner">
 				<section style="padding: 2em !important;">
-					<h2>Get in touch</h2>
-					<p>문의 사항</p>
-					<div class="split style1">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field half">
-										<label for="email">Email</label> <input type="text" name="email" id="email" />
-									</div>
-									<div class="field half">
-										<label for="title">Title</label> <input type="text" name="title" id="title" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="5"></textarea>
-									</div>
+				<h2>Get in touch</h2>
+				<p>문의 사항</p>
+				<div class="split style1">
+					<section>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field half">
+									<label for="email">Email</label> <input type="text" name="email" id="email" />
 								</div>
-								<ul class="actions">
-									<li><a href="javascript:void(0);" onclick="send_message();" class="button submit">Send Message</a></li>						
+								<div class="field half">
+									<label for="title">Title</label> <input type="text" name="title" id="title" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="5"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><a href="javascript:void(0);" onclick="send_message();" class="button submit">Send Message</a></li>
+							</ul>
+						</form>
+					</section>
+					<section>
+						<ul class="contact">
+							<li>
+								<h3>Address</h3> <span>
+									31-15 광주아트센터 3층 B<br /> 광주광역시, 동구 예술길<br /> 대한민국
+								</span>
+							</li>
+							<li>
+								<h3>Email</h3> <a href="#">Rentue@rentue.co.kr</a>
+							</li>
+							<li>
+								<h3>Phone</h3> <span>(062) 5882-5882</span>
+							</li>
+							<li>
+								<h3>Social</h3>
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 								</ul>
-							</form>
-						</section>
-						<section>
-							<ul class="contact">
-								<li>
-									<h3>Address</h3> <span>
-										31-15 광주아트센터 3층 B<br /> 광주광역시, 동구 예술길<br /> 대한민국
-									</span>
-								</li>
-								<li>
-									<h3>Email</h3> <a href="#">Rentue@rentue.co.kr</a>
-								</li>
-								<li>
-									<h3>Phone</h3> <span>(062) 5882-5882</span>
-								</li>
-								<li>
-									<h3>Social</h3>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-									</ul>
-								</li>
+							</li>
 							</ul>
 						</section>
 				</section>
