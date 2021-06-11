@@ -137,9 +137,9 @@ create sequence device_num
 	
 
 
--- A:튜브, B:핸디 라 가정
-insert into device values(device_num.nextval, 'test', 'A', 'F', 'T');
-insert into device values(device_num.nextval, 'test', 'B', 'F', 'T');
+-- A:핸디, B:튜브 라 가정
+insert into device values(handi_num.nextval, 'admin', 'A', 'F', 'T');
+insert into device values(device_num.nextval, 'admin', 'B', 'F', 'T');
 
 select * from device order by device_num;
 select * from rent_member where ct_id='dolmeori';
