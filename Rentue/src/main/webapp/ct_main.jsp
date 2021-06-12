@@ -7,36 +7,49 @@
 <title>관제소 회원 페이지입니다.</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/ct_main.css" />
+<link rel="stylesheet" href="assets/css/rent_main.css" />
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
+<style>
+li {
+	list-style: none;
+}
+
+#logo {
+	margin-left: 1.7em;
+	width: 290px;
+	heigh: 300px;
+}
+</style>
 </head>
 <body class="is-preload">
 
-<%
-	CtDTO dto = (CtDTO)session.getAttribute("dto");
-%>
+	<%
+	CtDTO dto = (CtDTO) session.getAttribute("dto");
+	%>
 
 	<!-- Sidebar -->
 	<section id="sidebar">
-		<div class="inner">
-			<ul class="actions small">
-				<li><a href="#" class="button small">홈으로</a></li>
-				<li><input type="button" value="my page" onclick="window.open('mypage.jsp', '마이페이지', 'width=900px, height=1200px')" class="button primary small">
-				</li>
-				<li>
-					<!-- 로그인 한 상태이니까 로그인 버튼이 로그아웃으로 바뀌어야 함 --> 
-					<input type="button" value="로그아웃" onclick="location.href='LogoutServiceCon'" class="button primary small">
-				</li>
+		<div style="float: left;">
+			<p style="text-align: left;">
+				<img src="images/logo2.png" id="logo">
+			</p>
+			<div>
+				<div class="inner">
+					<div style="align: right; margin-bottom: 2em;">
+						<p>
+							
+							<input type="button" value="로그아웃" onclick="location.href='LogoutServiceCon'" class="button primary small">
 
-			</ul>
-			<nav>
-				<ul>
-					<li><a href="#intro">RenTue MAP</a></li>
-				</ul>
-			</nav>
-		</div>
+						</p>
+					</div>
+					<nav>
+						<ul>
+							<li><a href="#intro">RenTue MAP</a></li>
+						</ul>
+					</nav>
+				</div>
 	</section>
 
 	<!-- Wrapper -->
@@ -49,7 +62,7 @@
 				</section> -->
 
 		<!-- Intro -->
-		<section id="intro" class="wrapper style1 fullscreen fade-up">
+		<section id="intro" class="wrapper style1 fullscreen fade-up" style="padding: 2em !important;">
 			<div class="inner">
 				<h1>Rentue-관제소</h1>
 				<div id="map" style="width: 800px; height: 600px;"></div>
@@ -79,15 +92,139 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c396fe0efc7b0e5f37418f17f1fd034d"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a"></script>
 	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center : new kakao.maps.LatLng(<%= dto.getLat()%>, <%= dto.getLon()%>),
-			level : 0
-		}; 
+	
+	/* var coords = [ { x: 35.19450, y: 126.95300 },  
+		  { x: 35.19448, y: 126.95298 },  
+		  { x: 35.19442, y: 126.95294 }, 
+		  { x: 35.19438, y: 126.95293 },  
+		  { x: 35.19436, y: 126.95297 },  
+		  { x: 35.19435, y: 126.95300 },  
+		  { x: 35.19433, y: 126.95303 },  
+		  { x: 35.19430, y: 126.95311 } ];
+	
+	   var container_1 = document.getElementById("map");
+	for(key in coords){
+	   var options_1 = {
+	      center: new kakao.maps.LatLng(coords.x, coords.y),
+	      level : 1
+	   };
+	   var _kakaoMap = new kakao.maps.Map(container_1, options_1);
+	   var marker_1 = null;
+		function tt() {
+			try {
+			  marker_1.setMap(null);
+			} finally {
+				lat_1 = lat_1 - 0.000012;
+				lng_1 = lng_1 - 0.000012;
+			    var coord_1 = new kakao.maps.LatLng(lat_1, lng_1);
+				//_kakaoMap.setCenter(coord);
+			    marker_1 = new kakao.maps.Marker({position:coord_1});
+				marker_1.setMap(_kakaoMap);
 
-		var map = new kakao.maps.Map(container, options);
+			}
+		}
+	} */
+	
+	   
+	   //var mapTypeControl = new kakao.maps.MapTypeControl();
+	  // _kakaoMap.addControl(mapTypeControl, kakao.maps.ControlPosition.RIGHTTOP);
+	  
+	  
+	
+	
+		var lat_1 = 35.19444429414635;
+		var lng_1 = 126.9530589614602;
+		var container_1 = document.getElementById("map");
+		var options_1 = {
+			center : new kakao.maps.LatLng(lat_1, lng_1),
+			level : 1,
+			maxLevel : 1
+		};
+		var _kakaoMap = new kakao.maps.Map(container_1, options_1);
+
+		kakao.maps.event.addListener(_kakaoMap, 'click', function(mouseEvent) {
+			var latlng = mouseEvent.latLng;
+			console.log(latlng);
+		});
+		//var mapTypeControl = new kakao.maps.MapTypeControl();
+		// _kakaoMap.addControl(mapTypeControl, kakao.maps.ControlPosition.RIGHTTOP);
+
+		var coords = [ { x: 35.19450, y: 126.95300, device: 82 },  
+				  { x: 35.19448, y: 126.95298, device: 83 },  
+				  { x: 35.19442, y: 126.95294, device: 84 }, 
+				  { x: 35.19438, y: 126.95293, device: 85 },  
+				  { x: 35.19436, y: 126.95297, device: 86 },  
+				  { x: 35.19435, y: 126.95300, device: 87 },  
+				  { x: 35.19433, y: 126.95303, device: 88 },  
+				  { x: 35.19430, y: 126.95311, device: 89 } ];
+
+		var tubes = new Object();
+		var markerArray = new Array();
+
+		var total = coords.length;
+		var avail = 0;
+		$.each(coords, function(i, v) {
+			var overlay = "<div class='tubeLabel'><span>" + v.device
+					+ "</span></div>";
+			$(".tubeLabel").css("margin-top", "8px");
+			var coordinate = new kakao.maps.LatLng(v.x, v.y);
+			//_kakaoMap.setCenter(coord);
+			var marker = new kakao.maps.Marker({
+				position : coordinate
+			});
+			marker.device = coords.device;
+			marker.setMap(_kakaoMap);
+			var co = new kakao.maps.CustomOverlay({
+				position : coordinate,
+				content : overlay
+			});
+			co.setMap(_kakaoMap);
+			markerArray.push(marker);
+
+			$.ajax({
+				data : {
+					device_id : v.device
+				},
+				url : 'SelectDeviceState',
+				contentType : "application/json; charset:euc-kr",
+				dataType : "JSON",
+				success : function(jsonList) {
+					if ($.trim(jsonList.state) == 'F') {
+						avail++;
+					}
+					$("#statediv").text(avail + "/" + total);
+				},
+				error : function(a, b, c) {
+					alert("에러가 발생하였습니다.");
+				}
+			});
+		});
+		
+		
+		
+		
+		var sw = new kakao.maps.LatLng(35.194278, 126.952885), // 사각형 영역의 남서쪽 좌표
+	    ne = new kakao.maps.LatLng(35.194510, 126.953261); // 사각형 영역의 북동쪽 좌표
+
+	// 사각형을 구성하는 영역정보를 생성합니다
+	// 사각형을 생성할 때 영역정보는 LatLngBounds 객체로 넘겨줘야 합니다
+	var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
+
+	// 지도에 표시할 사각형을 생성합니다
+	var rectangle = new kakao.maps.Rectangle({
+	    bounds: rectangleBounds, // 그려질 사각형의 영역정보입니다
+	    strokeWeight: 4, // 선의 두께입니다
+	    strokeColor: '#FF3DE5', // 선의 색깔입니다
+	    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	    strokeStyle: 'shortdashdot', // 선의 스타일입니다
+	    fillColor: '#FF8AEF', // 채우기 색깔입니다
+	    fillOpacity: 0.8 // 채우기 불투명도 입니다
+	});
+
+	// 지도에 사각형을 표시합니다
+	rectangle.setMap(_kakaoMap);
 	</script>
 
 </body>

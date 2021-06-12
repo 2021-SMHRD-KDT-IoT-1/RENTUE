@@ -151,20 +151,14 @@ create sequence message_num
 	;
 	
 
-<<<<<<< HEAD
-
--- A:핸디, B:튜브 라 가정
-insert into device values(handi_num.nextval, 'admin', 'A', 'F', 'T');
-insert into device values(device_num.nextval, 'admin', 'B', 'F', 'T');
-=======
 -- A:튜브, B:핸디 라 가정
 insert into device values(handi_num.nextval, 'test', 'A', 'F', 'T');
 insert into device values(device_num.nextval, 'test', 'B', 'F', 'T');
->>>>>>> branch 'Seongmi' of https://github.com/2021-SMHRD-KDT-IoT-1/RENTUE.git
+
 
 select * from device order by device_num;
 select * from rent_member where ct_id='dolmeori';
 
 insert into rent_member values('admin', 111, '스마트렌트', '563-88-00950', '광주 동구 예술길 31-15', 'dolmeori');
 
-delete from device where device_num=41
+delete from device

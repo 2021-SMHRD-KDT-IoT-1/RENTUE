@@ -23,6 +23,7 @@
 li {
 	list-style: none;
 }
+
 #logo {
 	margin-left: 1.7em;
 	width: 290px;
@@ -74,47 +75,50 @@ li {
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<section id="rent" class="wrapper style1 fullscreen fade-up">
-			<h3>렌탈업체 목록</h3>
-			<div>
-				<button id="rent_add" class="button small">등록</button>
-				<button id="rent_delete" class="button small">삭제</button>
-			</div>
-			<input type='text' id='rent_searchall' placeholder='검색어를 입력하세요'><br>
-			<div id="rent_div" style="width: 100%; height: 30em; overflow: auto">
-				<table id="rent_table">
-					<thead>
-						<tr>
-							<th>No.</th>
-							<th><input type="checkbox" id="rent_checkall" style='appearance: auto !important; opacity: 100 !important;'></th>
-							<th>아이디</th>
-							<th>비밀번호</th>
-							<th>업체명</th>
-							<th>사업자번호</th>
-							<th>주소</th>
-							<th>소속 관제소</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-						for (int i = 0; i < rent_list.size(); i++) {
-						%>
-						<tr>
-							<td><%=i + 1%></td>
-							<td><input type="checkbox" name="rent_check" style='appearance: auto !important; opacity: 100 !important;'></td>
-							<td><%=rent_list.get(i).getRent_id()%></td>
-							<td><%=rent_list.get(i).getRent_pw()%></td>
-							<td><%=rent_list.get(i).getRent_name()%></td>
-							<td><%=rent_list.get(i).getRent_num()%></td>
-							<td><%=rent_list.get(i).getRent_addr()%></td>
-							<td><%=rent_list.get(i).getCt_id()%></td>
-						</tr>
-						<%
-						}
-						%>
-					</tbody>
-				</table>
-			</div>
+		<section id="rent" class="wrapper style1 fullscreen fade-up" style="padding: 2em !important;">
+			<!-- <div class="inner" style="padding: 2em !important;"> -->
+				<h3>렌탈업체 목록</h3>
+				<div>
+					<input type='text' id='rent_searchall' placeholder='검색어를 입력하세요' style="width:40%; display:inline-block;">
+					<button id="rent_add" class="button">등록</button>
+					<button id="rent_delete" class="button">삭제</button>
+				</div>
+				<br>
+				<div id="rent_div" style="width: 100%; height: 30em; overflow: auto">
+					<table id="rent_table">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th><input type="checkbox" id="rent_checkall" style='appearance: auto !important; opacity: 100 !important;'></th>
+								<th>아이디</th>
+								<th>비밀번호</th>
+								<th>업체명</th>
+								<th>사업자번호</th>
+								<th>주소</th>
+								<th>소속 관제소</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+							for (int i = 0; i < rent_list.size(); i++) {
+							%>
+							<tr>
+								<td><%=i + 1%></td>
+								<td><input type="checkbox" name="rent_check" style='appearance: auto !important; opacity: 100 !important;'></td>
+								<td><%=rent_list.get(i).getRent_id()%></td>
+								<td><%=rent_list.get(i).getRent_pw()%></td>
+								<td><%=rent_list.get(i).getRent_name()%></td>
+								<td><%=rent_list.get(i).getRent_num()%></td>
+								<td><%=rent_list.get(i).getRent_addr()%></td>
+								<td><%=rent_list.get(i).getCt_id()%></td>
+							</tr>
+							<%
+							}
+							%>
+						</tbody>
+					</table>
+				</div>
+			<!-- </div> -->
 		</section>
 		<script type="text/javascript">
 			$("#rent_checkall").click(function() {
@@ -153,13 +157,14 @@ li {
 
 
 
-		<section id="ct" class="wrapper style2 fullscreen spotlights">
+		<section id="ct" class="wrapper style2 fullscreen spotlights" style="padding: 2em !important;">
 			<h3>관제소 목록</h3>
 			<div>
+				<input type='text' id='ct_searchall' placeholder='검색어를 입력하세요' style="width:40%; display: inline-block;">
 				<button id="ct_add">등록</button>
 				<button id="ct_delete">삭제</button>
 			</div>
-			<input type='text' id='ct_searchall' placeholder='검색어를 입력하세요'><br>
+			<br>				
 			<div id="ct_div" style="width: 100%; height: 30em; overflow: auto">
 				<table id="ct_table">
 					<thead>
@@ -250,10 +255,10 @@ li {
 
 
 
-		<section id="device" class="wrapper style1 fade-up">
+		<section id="device" class="wrapper style1 fade-up" style="padding: 2em !important;">
 			<h3>기기 목록</h3>
 			<div>
-				<input type="text" id="device_rent_id" placeholder="렌탈업체아이디"> <select id="device_type">
+				<input type="text" id="device_rent_id" placeholder="렌탈업체아이디" style="width:15em; display:inline-block;"> <select id="device_type" style="width:15em; display:inline-block;">
 					<option value="A">핸디형</option>
 					<option value="B">튜브형</option>
 				</select>
@@ -575,7 +580,7 @@ li {
 
 
 
-		<section id="message" class="wrapper style2 fullscreen spotlights">
+		<section id="message" class="wrapper style2 fullscreen spotlights" style="padding: 2em !important;">
 			<h3>메시지 목록</h3>
 
 			<div id="message_div" style="width: 100%; height: 30em; overflow: auto">
@@ -593,12 +598,12 @@ li {
 						%>
 						<tr>
 							<td style="width: 5em;"><%=i + 1%></td>
-							<td style="width: 10em;"><%=message_list.get(i).getRent_id()%></td>
+							<td style="width: 13em;"><%=message_list.get(i).getRent_id()%></td>
 							<td><a href="javascript:void(0);" class="scrolly" onclick="show_msgtext(<%=i%>);"><%=message_list.get(i).getMsg_title()%></a></td>
 						</tr>
 						<tr id="msg_display<%=i%>" style="display: none;">
 							<td colspan="3">
-								<div style="margin-left: 15em"><%=message_list.get(i).getMsg_text()%></div>
+								<div style="margin-left: 18em"><%=message_list.get(i).getMsg_text()%></div>
 							</td>
 						</tr>
 						<%

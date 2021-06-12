@@ -35,9 +35,6 @@ li {
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
 
-<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=c396fe0efc7b0e5f37418f17f1fd034d'></script>
-
-
 </head>
 <body class="is-preload">
 
@@ -139,7 +136,7 @@ li {
 							<li><button id="submit" type="button" onclick="button_update()" style="height: 3.75em; line-height: 2.75em; margin-top: 3em;">UPDATE</button></li>
 
 
-							<div id="map_update" style="width: 170px; height: 170px; margin-top: -100px; float: right;"></div>
+							<div id="map_update" style="width: 170px; height: 170px; margin-top: -100px; float: right; display: none;"></div>
 							<!-- 안보이게 하려면 display: none; 추가 -->
 						</div>
 					</div>
@@ -154,13 +151,13 @@ li {
 		<section id="one" class="wrapper style2 fullscreen spotlights" style="padding: 2em !important;">
 
 
-			<p>
+			
 			<div class="content">
 				<div class="inner">
 					<h2>Rentue 재고관리</h2>
 				</div>
 			</div>
-			</p>
+			<br>
 			<label>
 				<div>
 					<input type="text" id="search_device" placeholder="검색어를 입력하세요" style="width: 400px; float: left;" /> <br> <br>
@@ -340,7 +337,7 @@ li {
 	<!-- 주소 선택시 지도 뜨는 코드 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=본인앱키주소입력하기!!!!!&libraries=services"></script> -->
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c396fe0efc7b0e5f37418f17f1fd034d&libraries=services"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a&libraries=services"></script>
 
 
 	<script type="text/javascript">
@@ -645,7 +642,7 @@ li {
 	
 	//회원가입 창에서 주소검색, 지도 띄우기
 			// 검색된 좌표
-			/* let result;
+			 let result;
 			
 			// 검색된 주소값
 			let addr_save;
@@ -697,7 +694,7 @@ li {
 					});
 				}
 			}).open();
-		} */
+		} 
 			
 		
 			function button_update() {
