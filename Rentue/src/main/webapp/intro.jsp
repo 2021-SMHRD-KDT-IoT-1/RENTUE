@@ -176,7 +176,7 @@ li {
 
 			<!-- 조인버튼 위치 수정해야함!  -->
 			<ul class="actions">
-				<li><a href="#modal" class="button scrolly">Join Us</a></li>
+				<li><a href="#modal" class="button scrolly" style="position: absolute; right: 1em; bottom: 5em;">Join Us</a></li>
 			</ul>
 
 		</section>
