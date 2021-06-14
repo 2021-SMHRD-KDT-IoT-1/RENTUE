@@ -149,7 +149,7 @@ li {
 							</select>
 								<button id="search">가까운 관제소 찾기</button></li>
 							<li><button id="submit" type="button" onclick="button_join()">JOIN US</button></li>
-							<div id="map" style="width: 170px; height: 170px; margin-top: -100px; float: right; display: none"></div>
+							<div id="map" style="width: 170px; height: 170px; margin-top: -170px; float: right; display: none"></div>
 						</div>
 
 						</p>
@@ -171,12 +171,12 @@ li {
 		</section> -->
 
 		<!-- One -->
-		<section id="one" class="wrapper style2 fullscreen spotlights" style="background-image: url('images/device1.png')">
+		<section id="one" class="wrapper style2 fullscreen spotlights" style="background-image: url('images/device1.png');  background-size: cover;">
 
 
 			<!-- 조인버튼 위치 수정해야함!  -->
 			<ul class="actions">
-				<li><a href="#modal" class="button scrolly" style="position: absolute; right: 1em; bottom: 5em;">Join Us</a></li>
+				<li><a href="#modal" class="button scrolly primary" style="position: absolute; right: 1em; bottom: 4em; opacity: 0.625;">Join Us</a></li>
 			</ul>
 
 		</section>
@@ -272,7 +272,7 @@ li {
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=본인앱키주소입력하기!!!!!&libraries=services"></script> -->
 
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a&libraries=services"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7afc685329a94abf98fb3fc9b7499f90&libraries=services"></script>
 
 	<script type="text/javascript">
 			
@@ -514,6 +514,7 @@ $(document).ready(function() {
 						console.log("메시지가 전송되었습니다.");
 						
 						alert("메시지가 전송되었습니다.");
+						location.reload();
 					},
 					error:function(){
 						alert("메시지 전송에 실패하였습니다.");

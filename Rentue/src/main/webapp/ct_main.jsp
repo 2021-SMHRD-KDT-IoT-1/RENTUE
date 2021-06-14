@@ -65,7 +65,7 @@ li {
 		<section id="intro" class="wrapper style1 fullscreen fade-up" style="padding: 2em !important;">
 			<div class="inner">
 				<h1>Rentue-관제소</h1>
-				<button onclick="selectOverlay('RECTANGLE')" style="margin-left:60em;">경계선 설정</button>
+				<button onclick="selectOverlay('RECTANGLE')" style="margin-left:600px; margin-bottom:2em;">경계선 설정</button>
 				<div id="map" style="width: 800px; height: 600px;"></div>
 
 			</div>
@@ -94,7 +94,7 @@ li {
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a"></script> -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a&libraries=drawing"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7afc685329a94abf98fb3fc9b7499f90&libraries=drawing"></script>
 	<script>
 		
 	/* var coords = [ { x: 35.19450, y: 126.95300 },  

@@ -239,8 +239,8 @@ li {
 										}
 										%>
 									</td>
-									<td><a href="Device_State_Update?device_num=<%=list.get(i).getDevice_num()%>">렌탈</a></td>
-									<td><a href="Device_broken_update?device_num=<%=list.get(i).getDevice_num()%>">고장</a></td>
+									<td><a href="javascript:void(0)" onclick="change(<%=list.get(i).getDevice_num()%>)">렌탈</a></td>
+									<td><a href="javascript:void(0)" onclick="broke(<%=list.get(i).getDevice_num()%>)">고장</a></td>
 									<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;' /></td>
 								</tr>
 								<%
@@ -337,7 +337,7 @@ li {
 	<!-- 주소 선택시 지도 뜨는 코드 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=본인앱키주소입력하기!!!!!&libraries=services"></script> -->
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92da30628c14e3e7954ea453ba17c38a&libraries=services"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7afc685329a94abf98fb3fc9b7499f90&libraries=services"></script>
 
 
 	<script type="text/javascript">
@@ -410,8 +410,8 @@ li {
 						} else {
 							val += "<td>고장</td>";
 						}
-						val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
-						val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
+						val += "<td><a href='javascript:void(0)' onclick='change(" + v.device_num + ")'>렌탈</a></td>";
+						val += "<td><a href='javascript:void(0)' onclick='broke(" + v.device_num + ")'>고장</a></td>";											
 						val += "<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td></tr>";
 						$("#kkk").append(val);
 		        	});
@@ -502,8 +502,8 @@ li {
 								} else {
 									val += "<td>고장</td>";
 								}
-								val += "<td><a href='Device_State_Update?device_num=" + v.device_num + "'>렌탈</a></td>";
-								val += "<td><a href='Device_broken_update?device_num=" + v.device_num + "'>고장</a></td>";											
+								val += "<td><a href='javascript:void(0)' onclick='change(" + v.device_num + ")'>렌탈</a></td>";
+								val += "<td><a href='javascript:void(0)' onclick='broke(" + v.device_num + ")'>고장</a></td>";
 								val += "<td><input type='checkbox' class='del_check' style='appearance: auto !important; opacity: 100 !important;'/></td></tr>";
 								$("#kkk").append(val);
 				        	});
@@ -539,7 +539,7 @@ li {
  		         
 		        success:function(){
 		            console.log("완료!");
-		            location.reload();
+		            history.go(0);
 		        },
 		        error:function(){
 		            alert("에러가 발생하였습니다.");
@@ -790,9 +790,44 @@ li {
 					},
 					success:function(data){
 						alert("메시지가 전송되었습니다.");
+						location.reload();
 					},
 					error:function(){
 						alert("메시지 전송에 실패하였습니다.");
+					}
+				});
+			}
+			
+			function change(device_num){
+				$.ajax({
+					url:'Device_State_Update',
+					type:'post',
+					data:{
+						device_num : device_num
+					},
+					success:function(data){
+						console.log("완료");
+						location.reload();
+					},
+					error:function(){
+						alert("에러가 발생하였습니다.");
+					}
+				});
+			}
+			
+			function broke(device_num){
+				$.ajax({
+					url:'Device_broken_update',
+					type:'post',
+					data:{
+						device_num : device_num
+					},
+					success:function(data){
+						console.log("완료");
+						location.reload();
+					},
+					error:function(){
+						alert("에러가 발생하였습니다.");
 					}
 				});
 			}

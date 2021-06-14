@@ -36,7 +36,9 @@ primary key (device_num, device_type)
 );
 
 
-select * from device order by device_num;
+select * from device order by device_num, device_type;
+
+delete from contact where rent_id='smartrent'
 
 
 select * from device;
